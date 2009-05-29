@@ -1,0 +1,44 @@
+[alias]
+  b = branch
+  ci = commit -v
+  cia = commit -v -a
+  co = checkout
+  com = checkout master
+  cp = cherry-pick
+  d = diff
+  rb = !grb
+  st = status
+  stat = status
+  who = shortlog -s --
+  # l = log
+  # ll = log -p
+  # lt = log trunk..
+  # llt = log -p trunk..
+  # lm = log master..
+  # llm = log -p master..
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+
+[core]
+  pager = less -rciM
+  excludesfile = ~/.gitignore
+
+[github]
+  user = rfletcher
+  token = 1178dbb953eee29648eb032c8fcb1c79
+
+[gui]
+  fontdiff = -family Inconsolata -size 11 -weight normal -slant roman -underline 0 -overstrike 0
+
+[user]
+  email = fletch@pobox.com
+  name = Rick Fletcher
+
+[merge]
+  tool = opendiff
+
+[push]
+  default = tracking

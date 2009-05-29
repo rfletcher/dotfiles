@@ -1,0 +1,325 @@
+##
+# global.sh
+#
+# aliases, functions, etc. which should be set on every host
+#
+
+# aliases --------------------------------------------------------------
+
+alias ..='cd ..'
+alias cleanmac='find . -type f -name "._*" -print -delete'
+alias less='less -rciM'
+alias ls='ls --color'
+alias l='ls -hF'
+alias ll='l -o'
+alias llg='l -l'
+alias natsort='php -r "\$a = file(\"php://stdin\"); natsort(\$a); print join(\$a);"'
+alias now='date +"%F %H:%M %z"'
+alias realpath='readlink -f'
+alias toupper='tr [:lower:] [:upper:]'
+alias tolower='tr [:upper:] [:lower:]'
+
+# fix typos
+alias snv='svn'
+
+# functions ------------------------------------------------------------
+
+##
+# convert a user-friendly string into an ansi color or style code
+#
+function _ansi() {
+  case "$1" in
+    black)   echo 30;;
+    red)     echo 31;;
+    green)   echo 32;;
+    yellow)  echo 33;;
+    blue)    echo 34;;
+    magenta) echo 35;;
+    cyan)    echo 36;;
+    white)   echo 37;;
+
+    off)           echo 0;;
+    bold)          echo 1;;
+    faint)         echo 2;;
+    italic)        echo 3;;
+    underline)     echo 4;;
+    blink)         echo 5;;
+    fastblink)     echo 6;;
+    reverse)       echo 7;;
+    invisible)     echo 8;;
+  esac;
+}
+
+##
+# test whether a value exists in an array
+#
+# usage: COLORS=( red blue ); _in_array COLORS red && echo "found!"
+#
+function _in_array() {
+  for ITEM in $(eval echo \${$1[*]}); do
+    if [[ "$ITEM" = "$2" ]]; then return 0; fi
+  done
+
+  return 1;
+}
+
+##
+# change base
+#
+# usage: cbase <base from> <base to> <value>
+#
+function cbase() {
+  echo "obase=$2;ibase=$1;$3" | bc
+}
+# some shortcuts
+alias bin2dec='cbase 2 10'
+alias dec2bin='cbase 10 2'
+alias dec2hex='cbase 10 16'
+alias hex2dec='cbase 16 10'
+alias hex2bin='cbase 16 2'
+alias dec2oct='cbase 10 8'
+alias oct2dec='cbase 10 8'
+
+##
+# user-friendly way to add ansi color to text
+#
+# usage:
+#   echo i can print $(color red)red $(color off), \
+#     $(color yellow green)yellow on green$(color off), or even \
+#     $(color underline blue)underlined blue
+#
+# requires the _in_array and _ansi functions
+#
+function color() {
+  local COLORS=( black red green yellow blue magenta cyan white );
+  local EFFECTS=( normal bold faint italic underline blink fastblink reverse invisible doubleline );
+
+  local codes=( )
+
+  ##
+  # add a color code to the code sequence array
+  #
+  function _push() {
+    local code=$(_ansi $1)
+
+    if [[ "$2" == "background" ]] && (( $code >= 30 )) && (( $code < 40 )); then
+      code=$(($code + 10))
+    fi;
+
+    codes=("${codes[@]}" $code);
+    return 0;
+  }
+
+  ##
+  # do!
+  #
+
+  # not enough params
+  if [[ "$#" > 3 ]]; then
+    echo "error"
+    return 1;
+
+  # special case resetting to default colors
+  elif [[ "$1" == off || -z "$1" ]]; then
+    _push "off"
+
+  # collect the params as ansi codes
+  else
+    for param in $*; do
+      # is it a color?
+      _in_array COLORS $param && {
+        if [[ "$FG" != true ]]; then
+          local FG=true
+          _push $param
+        elif [[ "$BG" != true ]]; then
+          local BG=true
+          _push $param "background"
+        fi
+        continue;
+      }
+
+      # is it an effect?
+      _in_array EFFECTS $param && {
+        _push $param
+        continue
+      }
+
+      # unrecognized param
+      echo -e "$(color red)error:$(color off) \"$param\" is not recognized"
+      return 0
+    done
+  fi
+
+  # gather the colors/effects as a sequence of ansi codes
+  local seq=${codes[*]}
+  seq=${seq// /;}
+
+  # print it
+  echo -en '\033['${seq}m;
+}
+
+##
+# extract - archive extractor (found: http://dotfiles.org/~morax/.bashrc)
+#
+# usage: extract <file>
+#
+function ex() {
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.tar.bz2)   tar xcjf "$1"   ;;
+      *.tar.gz)    tar zxf  "$1"   ;;
+      *.bz2)       bunzip2 "$1"    ;;
+      *.rar)       unrar x "$1"    ;;
+      *.gz)        gunzip "$1"     ;;
+      *.tar)       tar xcf "$1"    ;;
+      *.tbz2)      tar xcjf "$1"   ;;
+      *.tgz)       tar xczf "$1"   ;;
+      *.zip)       unzip "$1"      ;;
+      *.Z)         uncompress "$1" ;;
+      *.7z)        7z x "$1"       ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+##
+# execute a command N times
+#
+# usage: forn 10 echo "this is echo {}"
+#
+function forn() {
+  local num=$1; shift;
+  local command=$@
+
+  for(( i=1; i<=$num; i++ )); do
+    `${command//\{\}/$i}`
+  done
+}
+
+##
+# list hostnames of machines on which I have an account
+#
+# -p    return only personal hosts
+# -w    return only work hosts
+#
+function hosts() {
+  # hosts
+  local h_personal="${HOSTS_PERSONAL[*]}"
+  local h_work="${HOSTS_RUPTURE[*]}"
+
+  # defaults
+  local h_display=''
+  local display_all=1;
+  local display_personal='';
+  local display_work='';
+
+  # handle options
+  OPTIND=
+  while getopts "pw" option "$@"; do
+    case "$option" in
+       p ) display_all=''; display_personal=1;;
+       w ) display_all=''; display_work=1;;
+       ? ) echo "invalid option: $OPTARG"; return 1;;
+    esac;
+  done
+
+  # print hostnames
+  if [ -n "$display_all" ] || [ -n "$display_personal" ]; then
+    h_display="$h_display $h_personal";
+  fi
+  if [ -n "$display_all" ] || [ -n "$display_work" ]; then
+    h_display="$h_display $h_work";
+  fi
+
+  echo "$h_display" | trim | split
+}
+
+##
+# format a json string from STDIN
+#
+# usage: echo "{}" | jsonlint
+#
+function jsonlint() {
+  php -r 'if(($o=json_decode(file_get_contents("php://stdin")))==NULL){print "invalid";exit(1);}
+  function pj($o,$i=""){
+    if(!is_object($o)&&!is_array($o)){echo "\"".addcslashes($o,"\0..\37\"\\")."\"\n"; return;}
+    $d=is_array($o)?"[]":"{}"; echo "${d[0]}\n"; $i2 = $i."    ";
+    foreach($o as $n=>$v){echo $i2."\"$n\": "; pj($v,$i2);}
+    print "$i${d[1]}\n";
+  }pj($o);'
+}
+
+##
+# test whether a domain is registered
+#
+# usage: echo "foo bar" | registered
+# usage: registered foo.com
+#
+function registered() {
+  if [ -z "$1" ]; then INPUT=`cat -`; else INPUT="$1"; fi
+
+  for DOMAIN in $INPUT; do
+    if [ `expr index "$DOMAIN" \.` == "0" ]; then
+      DOMAIN="$DOMAIN.com"
+    fi
+
+    echo -n "$DOMAIN is... "
+
+    if [ -z "`whois "$DOMAIN" | grep -i "no match for"`" ]; then
+      echo "taken."
+    else
+      echo "available!"
+    fi
+  done
+}
+
+##
+# split a string into lines
+# default split token: space
+#
+# usage: echo "this/is/a/string" | split "/"
+#
+function split() {
+  echo `cat -` | tr "${1- }" "\n"
+}
+
+##
+# trim a string, or each line in a string
+#
+# -l trim each line (default)
+# -s trim the entire string
+#
+# usage: cat somefile.txt | trim
+#
+function trim() {
+  INPUT=`cat -`
+
+  # defaults
+  t_each_line=''
+  t_whole_string=''
+
+  while getopts "ls" option "$@"; do
+    case "$option" in
+       l ) t_each_line=1;;
+       s ) t_whole_string=1;;
+       ? ) echo "invalid option: $OPTARG"; return 1;;
+    esac;
+  done
+
+  if [ $t_whole_string ]; then
+    INPUT=`echo "$INPUT" | \
+           awk '
+                       NF == 0 { nb++ ; next };
+               nb      { for (i = 1; i <= NF; i++) print "" }
+                       { nb = 0; print }' | \
+           sed -En '1h; 1!H; $ {; g; s/^(\n|[ \t])*//; p; }'`
+  fi
+
+  if [ -z "$t_whole_string" ] || [ "$t_each_line" ]; then
+    INPUT=`echo "$INPUT" | sed 's/^[ 	]*//;s/[ 	]*\$//'`
+  fi
+
+  echo "$INPUT"
+}
