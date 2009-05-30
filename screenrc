@@ -1,0 +1,13 @@
+# UTF stuff
+setenv LC_CTYPE en_US.UTF-8
+defutf8 on
+
+# Obvious...
+startup_message off
+autodetach on
+vbell on
+
+caption always
+
+# My awesome hardstatus d-:
+hardstatus alwayslastline "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"

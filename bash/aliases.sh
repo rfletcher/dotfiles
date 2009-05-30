@@ -276,6 +276,46 @@ function registered() {
 }
 
 ##
+# start or resume a screen session, optionally loading a session-specific
+# configuration from ~/.screen/<sessionname>.screenrc
+#
+# usage: screen rupture
+#
+function screen() {
+  local screenbin=$(which screen)
+  local sessionname="$1"
+  local sessionrc=~/.screen/"$sessionname".screenrc
+  local args
+
+  # if name looks like a switch, just call screen with provided args and quit
+  if [[ $# == 0 ]] || [[ ${sessionname:0:1} == "-" ]]; then
+    args=("${@}")
+  else
+    # try to reattach
+    "$screenbin" -d -r "$sessionname" && exit
+
+    # pass args as args to screen
+    args=(-S "${@}")
+
+    # if there's a custom config, use it
+    if [[ -f "$sessionrc" ]]; then
+      # if there's a .screenrc, load it before the session's rc
+      if [[ -f ~/.screenrc ]]; then
+        local tmprc=$(mktemp)
+        cat ~/.screenrc > "$tmprc"; echo >> "$tmprc"
+        cat "$sessionrc" >> "$tmprc"
+        sessionrc="$tmprc"
+      fi
+
+      args+=(-c "$sessionrc")
+    fi
+  fi
+
+  # start screen
+  "$screenbin" "${args[@]}"
+}
+
+##
 # split a string into lines
 # default split token: space
 #

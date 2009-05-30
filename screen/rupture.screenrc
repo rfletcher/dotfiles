@@ -1,0 +1,25 @@
+screen -t Bash               0
+stuff "rcd; clear\012"
+screen -t MySQL              1
+stuff "mysql5  -u root rupture_development\012"
+screen -t "Ruby on Rails"    2
+stuff "rcd && rupdate && tail -f log/development.log\012"
+screen -t "Rupture Platform" 3
+stuff "rcd && cd ../platform && git pull && make && make test && make dev\012"
+
+# split horizontally
+split
+
+# split the top pane vertically
+split -v
+
+# top left pane is the rails log
+select 2
+
+# top right pane is the platform
+focus
+select 3
+
+# bottom pain is the shell
+focus
+select 0
