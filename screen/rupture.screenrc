@@ -20,6 +20,6 @@ select 2
 focus
 select 3
 
-# bottom pain is the shell
+# bottom pane is the shell
 focus
 select 0
