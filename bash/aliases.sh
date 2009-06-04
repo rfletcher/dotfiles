@@ -8,6 +8,7 @@
 
 alias ..='cd ..'
 alias cleanmac='find . -type f -name "._*" -print -delete'
+alias json='json_reformat'
 alias less='less -rciM'
 alias ls='ls --color'
 alias l='ls -hF'
@@ -18,6 +19,7 @@ alias now='date +"%F %H:%M %z"'
 alias realpath='readlink -f'
 alias toupper='tr [:lower:] [:upper:]'
 alias tolower='tr [:upper:] [:lower:]'
+alias wgetd='wget -O - --quiet'
 
 # fix typos
 alias snv='svn'
@@ -234,21 +236,6 @@ function hosts() {
   fi
 
   echo "$h_display" | trim | split
-}
-
-##
-# format a json string from STDIN
-#
-# usage: echo "{}" | jsonlint
-#
-function jsonlint() {
-  php -r 'if(($o=json_decode(file_get_contents("php://stdin")))==NULL){print "invalid";exit(1);}
-  function pj($o,$i=""){
-    if(!is_object($o)&&!is_array($o)){echo "\"".addcslashes($o,"\0..\37\"\\")."\"\n"; return;}
-    $d=is_array($o)?"[]":"{}"; echo "${d[0]}\n"; $i2 = $i."    ";
-    foreach($o as $n=>$v){echo $i2."\"$n\": "; pj($v,$i2);}
-    print "$i${d[1]}\n";
-  }pj($o);'
 }
 
 ##
