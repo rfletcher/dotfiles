@@ -24,7 +24,7 @@ function rupdate() {
   rcd &&
   git checkout master &&
   git pull &&
-  git submodule update &&
+  git submodule update --init &&
   rake db:migrate &&
   git checkout db/schema.rb &&
   git checkout $oldbranch &&
