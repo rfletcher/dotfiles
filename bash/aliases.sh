@@ -18,6 +18,7 @@ alias llg='l -l'
 alias natsort='php -r "\$a = file(\"php://stdin\"); natsort(\$a); print join(\$a);"'
 alias now='date +"%F %H:%M %z"'
 alias realpath='readlink -f'
+alias sc='savecommand'
 alias toupper='tr [:lower:] [:upper:]'
 alias tolower='tr [:upper:] [:lower:]'
 alias wgetd='wget -O - --quiet'
@@ -199,6 +200,18 @@ function forn() {
   for(( i=1; i<=$num; i++ )); do
     `${command//\{\}/$i}`
   done
+}
+
+##
+# append a command to the bash history without executing it
+#
+# usage: savecommand echo foo bar
+#
+function savecommand() {
+  history -d $(history 1 | cut -d " " -f 1)
+  history -a
+  echo "$@" >> "$HISTFILE"
+  history -r
 }
 
 ##
