@@ -8,6 +8,7 @@
   d = diff
   rb = !grb
   st = status
+  su = submodule update
   stat = status
   who = shortlog -s --
   # l = log
