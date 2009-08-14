@@ -10,6 +10,7 @@
   st = status
   su = submodule update
   stat = status
+  staged = diff --cached
   who = shortlog -s --
   # l = log
   # ll = log -p
