@@ -205,10 +205,16 @@ function forn() {
 ##
 # append a command to the bash history without executing it
 #
-# usage: savecommand echo foo bar
+# scenario: you've typed out a long command and realized you need to do
+#   something else before running it.  ^a and prefix with "savecommand".
 #
+# usage:
+#   $ savecommand echo foo
+#   (do something else)
+#   $ !echo
+
 function savecommand() {
-  history -d $(history 1 | cut -d " " -f 1)
+  history -d $(history 1 | awk '{print $1}')
   history -a
   echo "$@" >> "$HISTFILE"
   history -r
