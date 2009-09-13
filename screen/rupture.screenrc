@@ -1,11 +1,11 @@
-screen -t Bash               0
-stuff "rcd; clear\012"
-screen -t MySQL              1
+screen -t "Ruby on Rails"    0
+stuff "rcd && tail -f log/development.log\012"
+screen -t "Rupture Platform" 1
+stuff "rcd && tail -f log/platform-dev.log\012"
+screen -t Bash               2
+stuff "rcd; rupdate\012"
+screen -t MySQL              3
 stuff "mysql5  -u root rupture_development\012"
-screen -t "Ruby on Rails"    2
-stuff "rcd && rupdate && tail -f log/development.log\012"
-screen -t "Rupture Platform" 3
-stuff "rcd && cd ../platform && git pull && make && make test && make dev\012"
 
 # split horizontally
 split
@@ -14,12 +14,12 @@ split
 split -v
 
 # top left pane is the rails log
-select 2
+select 0
 
 # top right pane is the platform
 focus
-select 3
+select 1
 
 # bottom pane is the shell
 focus
-select 0
+select 2
