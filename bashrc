@@ -11,6 +11,8 @@ export EDITOR=vi
 
 # other ENV variables --------------------------------------------------
 
+export HOST_CATEGORIES=( personal rupture )
+
 export HOSTS_PERSONAL=( blur jehu pavement quicksand spoon )
 export HOSTS_RUPTURE=( jehu dev.rupture.ea.com )
 
