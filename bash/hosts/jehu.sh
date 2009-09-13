@@ -24,11 +24,11 @@ alias yuicompressor='java -jar ~/bin/yuicompressor-2.4.2.jar'
 # functions ------------------------------------------------------------
 
 function proxy() {
-    PID=`ps aux | grep "ssh -D 8080" | grep -v grep | awk '{ print $2; }'`
+    PID=`ps aux | grep "ssh -D8080" | grep -v grep | awk '{ print $2; }'`
 
     if [ -n "$PID" ]; then
         kill $PID
     fi
 
-    launchctl start com.rickfletcher.Proxy
+    launchctl start org.openssh.dynamic-proxy
 }
