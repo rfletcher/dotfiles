@@ -11,6 +11,7 @@
   su = submodule update
   stat = status
   staged = diff --cached
+  unstage = reset HEAD
   who = shortlog -s --
   # l = log
   # ll = log -p
