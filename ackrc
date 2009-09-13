@@ -6,4 +6,5 @@
 --ignore-dir=tmp
 
 --type-add=ruby=.haml,.rake,.feature
+--type-add=css=.ncss,.sass
 
