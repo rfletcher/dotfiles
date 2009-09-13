@@ -19,15 +19,16 @@ alias rscreen="screen rupture";
 # update from git
 #
 function rupdate() {
+  rcd
   local oldbranch=`__git_ps1 %s`
 
-  rcd &&
-  git checkout master &&
+  ( test "$oldbranch" = "master" || git checkout master ) &&
   git pull &&
   git submodule update --init &&
   rake db:migrate &&
+  rake platform:update &&
   git checkout db/schema.rb &&
-  git checkout $oldbranch &&
-  git rebase master &&
+  ( test "$oldbranch" = "master" || git checkout $oldbranch ) &&
+  rake platform:start
   cd -
 }
