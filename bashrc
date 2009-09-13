@@ -21,7 +21,7 @@ export HOSTS_RUPTURE=( jehu dev.rupture.ea.com )
 export HISTCONTROL=ignoredups         # ignore duplicate commands
 export HISTIGNORE="$HISTIGNORE:ls:cd" # ignore specific commands
 export HISTSIZE=10000                 # bash `history` will remember N commands
-export HISTFILESIZE=${HISTSIZE}       # bash will remember N commands
+export HISTFILESIZE=${HISTSIZE}       # bash will remember N commands across sessions
 
 # bash options ---------------------------------------------------------
 
