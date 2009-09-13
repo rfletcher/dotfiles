@@ -3,7 +3,7 @@
 #
 
 # category env setup
-. ~/.bash/non-global/categories/personal.sh
+. ~/.bash/categories/personal.sh
 
 ##
 # environmental variables
