@@ -9,6 +9,7 @@ export DISPLAY=:0.0
 
 # aliases and functions ------------------------------------------------
 
+alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null';
 alias sort='sort -k 1,1'
 alias top='top -o cpu'
