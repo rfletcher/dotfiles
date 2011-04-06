@@ -4,8 +4,10 @@
 # link to all dotfiles from ~
 #
 
+READLINK_BIN="greadlink"
+
 INSTALL_FILE=$(basename "$BASH_SOURCE")
-DOTFILES_DIR=$(dirname "$(readlink -f "$BASH_SOURCE")")
+DOTFILES_DIR=$(dirname "$($READLINK_BIN -f "$BASH_SOURCE")")
 
 for FILE in "$DOTFILES_DIR"/*; do
   FILENAME=$(basename "$FILE")
@@ -16,7 +18,12 @@ for FILE in "$DOTFILES_DIR"/*; do
     if [[ -f ~/".$FILENAME" ]] || [[ -L ~/".$FILENAME" ]]; then
       rm ~/".$FILENAME"
     fi
+
     # link to the dotfile
-    ln -s "$FILE" ~/".$FILENAME"
+    if [[ -d "$FILE" ]]; then
+      ln -s "$FILE" ~/".$FILENAME"
+    else
+      ln "$FILE" ~/".$FILENAME"
+    fi
   fi
 done
