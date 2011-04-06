@@ -172,6 +172,17 @@ function color() {
 }
 
 ##
+# geoip
+#
+function geoip() {
+  IP="$1"
+  if [ -z "$IP" ]; then
+    IP=$(wgetd icanhazip.com)
+  fi
+  body "http://www.datasciencetoolkit.org/ip2coordinates/67.169.73.113" | json
+}
+
+##
 # extract - archive extractor (found: http://dotfiles.org/~morax/.bashrc)
 #
 # usage: extract <file>
