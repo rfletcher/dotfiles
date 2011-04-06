@@ -6,16 +6,11 @@
 
 ## set some variables, used to determine which * scripts to run
 
-PLATFORM=`uname -s | tolower`
-HOSTNAME=`uname -n | sed 's/\..*//' | tolower`
+PLATFORM=$(uname -s | tolower)
+HOSTNAME=$(uname -n | sed 's/\..*//' | tolower)
+type lsb_release &> /dev/null && DISTRIBUTION=$(lsb_release -i | cut -f 2 | tolower)
 
-# check for the lsb_release ("Linux Standard Base") command, and grok dist. name from it
-type lsb_release &> /dev/null
-if [ $? == 0 ]; then
-  DISTRIBUTION=`lsb_release -i | cut -f 2 | tolower`
-fi
-
-## include other non-global files
+## include any host-, platform-, or distribution-specific files
 
 # host-specific
 if [ -f ~/.bash/hosts/"$HOSTNAME".sh ]; then
