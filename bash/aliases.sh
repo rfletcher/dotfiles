@@ -24,6 +24,8 @@ alias rmv='rcp --remove-source-files'
 alias sc='savecommand'
 alias toupper='tr [:lower:] [:upper:]'
 alias tolower='tr [:upper:] [:lower:]'
+alias urlencode='perl -MURI::Escape -ne "\$/=\"\"; print uri_escape \$_"'
+alias urldecode='perl -MURI::Escape -ne "\$/=\"\"; print uri_unescape \$_"'
 alias wgetd='wget -O - --quiet'
 
 # fix typos
