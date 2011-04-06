@@ -6,8 +6,6 @@
 
 # for the occasional X11 app
 export DISPLAY=:0.0
-# add macports binaries to the PATH
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # aliases and functions ------------------------------------------------
 
