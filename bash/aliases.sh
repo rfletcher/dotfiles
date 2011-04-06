@@ -7,7 +7,6 @@
 # aliases --------------------------------------------------------------
 
 alias ..='cd ..'
-alias cleanmac='find . -type f -name "._*" -print -delete'
 alias grep='grep --color=auto'
 alias json='json_reformat'
 alias less='less -RciM'
