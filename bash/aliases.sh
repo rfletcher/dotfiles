@@ -7,6 +7,7 @@
 # aliases --------------------------------------------------------------
 
 alias ..='cd ..'
+alias epoch='date +%s'
 alias grep='grep --color=auto'
 alias json='json_reformat'
 alias less='less -RciM'
