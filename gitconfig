@@ -1,24 +1,22 @@
 [alias]
+  alias = !sh -c 'git config --get alias.$1' -
   b = branch
-  ci = commit -v
-  cia = commit -v -a
+  ci = commit
   co = checkout
   com = checkout master
   cp = cherry-pick
-  d = diff
+  fixup = !sh -c 'git rebase -i --autosquash head~$1' -
+  l = log --date=relative
+  ll = !git l --stat
   rb = !grb
-  st = status
-  su = submodule update
-  stat = status
+  repush = !git pull --rebase && git push
+  st = status -sb
   staged = diff --cached
-  unstage = reset HEAD
+  stashed = "!for NAME in $(git stash list | cut -d : -f 1); do echo \"$NAME\"; git show \"$NAME\"; done"
+  su = submodule update
+  unstage = reset HEAD --
+  web = instaweb --httpd=webrick
   who = shortlog -s --
-  # l = log
-  # ll = log -p
-  # lt = log trunk..
-  # llt = log -p trunk..
-  # lm = log master..
-  # llm = log -p master..
 
 [color]
   diff = auto
@@ -32,9 +30,6 @@
 [github]
   user = rfletcher
   token = 1178dbb953eee29648eb032c8fcb1c79
-
-[gui]
-  fontdiff = -family Inconsolata -size 11 -weight normal -slant roman -underline 0 -overstrike 0
 
 [user]
   email = fletch@pobox.com
