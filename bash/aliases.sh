@@ -7,8 +7,10 @@
 # aliases --------------------------------------------------------------
 
 alias ..='cd ..'
+alias body='curl -s'
 alias epoch='date +%s'
 alias grep='grep --color=auto'
+alias headers='curl -s -D - -o /dev/null'
 alias json='json_reformat'
 alias less='less -RciM'
 alias ls='ls --color'
