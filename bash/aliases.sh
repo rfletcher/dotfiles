@@ -277,7 +277,7 @@ function registered() {
   if [ -z "$1" ]; then INPUT=`cat -`; else INPUT="$1"; fi
 
   for DOMAIN in $INPUT; do
-    if [ `expr index "$DOMAIN" \.` == "0" ]; then
+    if [[ `expr index "$DOMAIN" \.` == "0" ]]; then
       DOMAIN="$DOMAIN.com"
     fi
 
