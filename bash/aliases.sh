@@ -278,7 +278,7 @@ function hosts() {
 ##
 # test whether a domain is registered
 #
-# usage: echo "foo bar" | registered
+# usage: echo foo bar | registered
 # usage: registered foo.com
 #
 function registered() {
