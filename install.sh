@@ -1,29 +1,23 @@
 #!/usr/bin/env bash
 
 ##
-# link to all dotfiles from ~
+# link to .dotfiles/* from ~/
 #
 
-READLINK_BIN="greadlink"
-
-INSTALL_FILE=$(basename "$BASH_SOURCE")
-DOTFILES_DIR=$(dirname "$($READLINK_BIN -f "$BASH_SOURCE")")
+INSTALL_SCRIPT=$(basename "$BASH_SOURCE")
+# get the real path to .dotfiles (`readlink -f` doesn't work in BSD)
+DOTFILES_DIR=$(unset CDPATH && cd $(dirname "$BASH_SOURCE") && pwd -P)
 
 for FILE in "$DOTFILES_DIR"/*; do
   FILENAME=$(basename "$FILE")
 
   # if it's not the install script itself...
-  if [[ "$FILENAME" != "$INSTALL_FILE" ]]; then
-    # remove the old dotfile
-    if [[ -f ~/".$FILENAME" ]] || [[ -L ~/".$FILENAME" ]]; then
-      rm ~/".$FILENAME"
-    fi
-
-    # link to the dotfile
-    if [[ -d "$FILE" ]]; then
-      ln -s "$FILE" ~/".$FILENAME"
+  if [[ "$FILENAME" != "$INSTALL_SCRIPT" ]]; then
+    # complain about non-symlinks that are in the way
+    if [ -e ~/".$FILENAME" ] && [ ! -L ~/".$FILENAME" ]; then
+      echo "error: $FILENAME is in the way" >&2
     else
-      ln "$FILE" ~/".$FILENAME"
+      rm "$FILENAME" && ln -s "$FILE" ~/".$FILENAME"
     fi
   fi
 done
