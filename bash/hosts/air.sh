@@ -1,26 +1,20 @@
 ##
-# env. setup for jehu
+# env. setup for air
 #
 
-# category env setup (TODO: do this automatically based on hostname)
+# category env setup (TODO: do this automatically based on hostname) --------
 . ~/.bash/categories/personal.sh
 . ~/.bash/categories/viglink.sh
 
-# env. variables -------------------------------------------------------
+# env. variables ------------------------------------------------------------
 
-# for Tomcat
-# export JAVA_HOME=/Library/Java/Home
-# export CATALINA_HOME=/Library/Tomcat/Home
-
-# aliases --------------------------------------------------------------
+# aliases -------------------------------------------------------------------
 
 alias cdb="cd ~/Code/baseballdb"
 alias tomcat-start="startup.sh"
 alias tomcat-restart="tomcat-stop && tomcat-start"
-alias yuicompressor='java -jar ~/bin/yuicompressor-2.4.2.jar'
-alias closurecompiler='java -jar ~/bin/compiler.jar'
 
-# functions ------------------------------------------------------------
+# functions -----------------------------------------------------------------
 
 function tomcat-stop() {
   shutdown.sh 2>/dev/null

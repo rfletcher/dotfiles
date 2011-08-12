@@ -2,9 +2,7 @@
 # env. settings for snocap machines
 #
 
-##
-# environmental variables
-#
+# env. variables ------------------------------------------------------------
 
 # oracle env stuff
 export ORACLE_HOME=/opt/oracle/product/10.1.0.3/instantclient
@@ -13,15 +11,15 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 # snocap workspace path
 export WORKSPACE=~/workspace/snocap
 
-##
-# aliases and functions
-#
+# aliases -------------------------------------------------------------------
 
 alias ws='workspace.php'
 
 alias dev='cd `ws --print-dir --local`'
 alias qa='cd `ws --print-dir -b qa --local`'
 alias prod='cd `ws --print-dir -b prod --local`'
+
+# functions -----------------------------------------------------------------
 
 ##
 # "sideways" cd

@@ -1,11 +1,7 @@
 ##
 # colors.sh
 #
-# set the hostname in the prompt to a color based on hostname
-#
-
-##
-# ls colors
+# set colors
 #
 
 # standard generic file kind colors

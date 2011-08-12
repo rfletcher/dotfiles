@@ -2,28 +2,27 @@
 # .bashrc
 #
 
-# standard ENV variables -----------------------------------------------
+# standard ENV variables ----------------------------------------------------
 
-if [ -d ~/bin ]; then
-  export PATH="~/bin:${PATH}"
-fi
 export EDITOR=vi
+# add ~/bin to the path, if it exists
+[ -d ~/bin ] && export PATH="~/bin:${PATH}"
 
-# other ENV variables --------------------------------------------------
+# other ENV variables -------------------------------------------------------
 
-export HOST_CATEGORIES=( personal rupture )
+export HOST_CATEGORIES=( personal viglink )
 
-export HOSTS_PERSONAL=( blur jehu pavement quicksand spoon )
-export HOSTS_RUPTURE=( jehu dev.rupture.ea.com )
+export HOSTS_PERSONAL=( air blur quicksand )
+export HOSTS_VIGLINK=( air )
 
-# bash history ---------------------------------------------------------
+# bash history --------------------------------------------------------------
 
-export HISTCONTROL=ignoredups         # ignore duplicate commands
+export HISTCONTROL=ignoredups         # ignore repeated commands
 export HISTIGNORE="$HISTIGNORE:ls:cd" # ignore specific commands
-export HISTSIZE=10000                 # bash `history` will remember N commands
-export HISTFILESIZE=${HISTSIZE}       # bash will remember N commands across sessions
+export HISTSIZE=10000                 # remember N commands in `history`
+export HISTFILESIZE=${HISTSIZE}       # remember N commands across sessions
 
-# bash options ---------------------------------------------------------
+# bash options --------------------------------------------------------------
 
 shopt -s cdspell        # correct minor spelling errors in a `cd` command
 shopt -s cmdhist        # save multiline commands in history as one-liners
@@ -33,13 +32,18 @@ shopt -s expand_aliases # include aliases when tab-completing commands
 shopt -s nocaseglob     # make path globbing case insensitive
 shopt -s checkwinsize   # check window dimensions after each command
 
-# extras ---------------------------------------------------------------
+# extras --------------------------------------------------------------------
 
 . ~/.bash/aliases.sh
 . ~/.bash/non-global.sh
 
+# init RVM, if present
+[ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
+
+# interactive shell?
 if [ "$PS1" ]; then
-  . ~/.bash/colors.sh
-  . ~/.bash/completions/*.sh
-  . ~/.bash/prompt.sh
+  type "git" &> /dev/null && . ~/.bash/completions/git.sh
+
+  . ~/.bash/global/colors.sh
+  . ~/.bash/global/prompt.sh
 fi

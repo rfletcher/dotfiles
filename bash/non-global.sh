@@ -4,7 +4,7 @@
 # initiate platform- or host-specific scripts
 #
 
-## set some variables, used to determine which * scripts to run
+## gather some info about the system, used to determine which scripts to run
 
 PLATFORM=$(uname -s | tolower)
 HOSTNAME=$(uname -n | sed 's/\..*//' | tolower)
@@ -22,7 +22,7 @@ if [ -f ~/.bash/platforms/"$PLATFORM".sh ]; then
   . ~/.bash/platforms/"$PLATFORM".sh
 fi
 
-# linux distribution-specific
+# distribution-specific
 if [[ "$DISTRIBUTION" != "" && -f ~/.bash/platforms/"$PLATFORM"-"$DISTRIBUTION".sh ]]; then
   . ~/.bash/platforms/"$PLATFORM"-"$DISTRIBUTION".sh
 fi

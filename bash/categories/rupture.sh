@@ -1,19 +1,17 @@
 ##
 # env. settings for rupture machines
 #
-# see $HOSTS_PERSONAL in bashrc.sh
-#
 
-# env. variables -------------------------------------------------------
+# env. variables ------------------------------------------------------------
 
 export RUPTURE_WORKSPACE=~/Documents/Code/rupture/website
 
-# aliases --------------------------------------------------------------
+# aliases -------------------------------------------------------------------
 
 alias rcd="cd $RUPTURE_WORKSPACE";
 alias rscreen="screen rupture";
 
-# functions ------------------------------------------------------------
+# functions -----------------------------------------------------------------
 
 ##
 # update from git

@@ -1,7 +1,7 @@
 ##
 # prompt.sh
 #
-# custom prompt setup
+# custom bash prompt
 #
 
 ##
@@ -22,16 +22,6 @@ C_DIR_NOWRITE="red"
 export C_DIR_OWNER C_DIR_WRITABLE C_DIR_NOWRITE
 
 ##
-# if runnning as root...
-#
-if [ $EUID = "0" ]; then
-  # ...add a red exclamation prefix
-  PREFIX="\[$(color red)\]!\[$(color off)\]"
-  # ...set the host color to red
-  # C_HOST="\[$(color red)\]"
-fi
-
-##
 # pwd color
 #
 # get the color code for the current directory
@@ -45,6 +35,16 @@ get_pwd_color() {
     echo $C_DIR_NOWRITE
   fi
 }
+
+##
+# alter the prompt when running as root
+#
+if [[ "$EUID" == "0" ]]; then
+  # ...add a red exclamation prefix
+  PREFIX="\[$(color red)\]!\[$(color off)\]"
+  # ...set the host color to red
+  # C_HOST="red"
+fi
 
 ##
 # set the prompt

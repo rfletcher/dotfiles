@@ -1,17 +1,17 @@
 ##
-# platform-specific env. settings for OS X
+# env. setup for OS X
 #
 
-# ENV variables --------------------------------------------------------
+# env. variables ------------------------------------------------------------
 
 # for the occasional X11 app
 export DISPLAY=:0.0
 
-# aliases and functions ------------------------------------------------
+# aliases -------------------------------------------------------------------
 
 alias brew-upgrade='brew update && brew install $(brew list | grep -v tomcat)'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
-alias ql='qlmanage -p "$@" >& /dev/null';
+alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
 alias top='top -o cpu'
 
@@ -20,3 +20,5 @@ alias expr='gexpr'
 alias ls='gls --color'
 alias readlink='greadlink'
 alias seq='gseq'
+
+# functions -----------------------------------------------------------------
