@@ -312,7 +312,7 @@ __git_ps1 ()
 		fi
 
 		local f="$w$i$s$u$p"
-		printf "${1:- (%s)}" "$c${b##refs/heads/}${f:+ $f}$r"
+		printf "${1:- (%s)}" "$c${b##refs/heads/}$r${f:+ $f}"
 	fi
 }
 
