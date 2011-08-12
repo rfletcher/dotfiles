@@ -4,6 +4,12 @@
 # custom bash prompt
 #
 
+# show git state in addition to the branch name
+export GIT_PS1_SHOWDIRTYSTATE=1
+# export GIT_PS1_SHOWSTASHSTATE=1
+# export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+
 ##
 # set default prompt colors
 #
