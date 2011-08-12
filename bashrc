@@ -34,15 +34,15 @@ shopt -s checkwinsize   # check window dimensions after each command
 
 # extras --------------------------------------------------------------------
 
-. ~/.bash/aliases.sh
-. ~/.bash/non-global.sh
+. ~/.bash/global/aliases.sh
+. ~/.bash/global/non-global.sh
 
 # init RVM, if present
 [ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
 
 # interactive shell?
 if [ "$PS1" ]; then
-  type "git" &> /dev/null && . ~/.bash/completions/git.sh
+  type "git" >/dev/null && . ~/.bash/completions/git.sh
 
   . ~/.bash/global/colors.sh
   . ~/.bash/global/prompt.sh
