@@ -29,3 +29,16 @@ fi
 
 ## run per-category scripts based on hostname
 
+if [[ "$HOST_CATEGORIES" != "" ]]; then
+  for CATEGORY in "${HOST_CATEGORIES[@]}"; do
+    SCRIPT=".bash/categories/${CATEGORY}.sh"
+    if [ -f ~/"${SCRIPT}" ]; then
+      CATEGORY_ARR="HOSTS_$(echo $CATEGORY | toupper)[@]"
+      for CATEGORY_HOST in "${!CATEGORY_ARR}"; do
+        if [[ "$HOSTNAME" == "$CATEGORY_HOST" ]]; then
+          . ~/"$SCRIPT"
+        fi
+      done
+    fi
+  done
+fi

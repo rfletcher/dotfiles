@@ -2,10 +2,6 @@
 # env. setup for jehu
 #
 
-# category env setup (TODO: do this automatically based on hostname)
-. ~/.bash/categories/personal.sh
-. ~/.bash/categories/rupture.sh
-
 # env. variables -------------------------------------------------------
 
 # # include xalan

@@ -2,10 +2,6 @@
 # env. setup for air
 #
 
-# category env setup (TODO: do this automatically based on hostname) --------
-. ~/.bash/categories/personal.sh
-. ~/.bash/categories/viglink.sh
-
 # env. variables ------------------------------------------------------------
 
 # aliases -------------------------------------------------------------------
