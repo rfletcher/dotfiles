@@ -9,7 +9,7 @@ export DISPLAY=:0.0
 
 # aliases -------------------------------------------------------------------
 
-alias brew-upgrade='brew update && brew install $(brew list | grep -v tomcat)'
+alias brew-upgrade='brew update && brew upgrade $(brew outdated | cut -d " " -f 1 | grep -v tomcat)'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
