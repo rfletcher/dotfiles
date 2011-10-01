@@ -1,6 +1,6 @@
 # case insensitive
 -i
---pager="less -RciM"
+--pager=less -RciM
 
 --ignore-dir=log
 --ignore-dir=doc
