@@ -2,6 +2,7 @@
   alias = !sh -c 'git config --get alias.$1' -
   b = branch
   ci = commit
+  cia = commit --amend -C HEAD
   co = checkout
   com = checkout master
   cp = cherry-pick
