@@ -4,5 +4,7 @@
 #:update_sources: true
 :backtrace: true
 :bulk_threshold: 1000
-gem: -n/usr/local/bin --no-user-install --no-ri
-rdoc: --line-numbers --fmt=shtml --template=direct
+gem: -n/usr/local/bin --no-user-install
+install: --no-ri
+update: --no-ri
+rdoc: --line-numbers # --template=direct
