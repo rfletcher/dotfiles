@@ -1,0 +1,4 @@
+EscapeChar ~
+
+Host flet.ch
+    # IdentityFile ~/.ssh/fletch-aws.pem
