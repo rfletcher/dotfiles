@@ -1,0 +1,44 @@
+# see http://wiki.macromates.com/Reference/Settings
+# see http://wiki.macromates.com/Reference/FolderSpecificSettings
+
+## Settings
+
+# binary               = false
+# encoding             = "UTF-8"
+excludeDirectories   = "{$excludeDirectories,log,vendor,tmp}" 
+includeFiles         = "{$includeFiles,.tm_properties,.htaccess,.gitignore}"
+# fileChooserGlob      = ""
+# fileType             = "text.plain"
+fontName             = "Inconsolata"
+fontSize             = 11
+showInvisibles       = false
+softTabs             = true
+softWrap             = false
+spellChecking        = false
+spellingLanguage     = "en"
+tabSize              = 2
+theme                = ""
+# windowTitle          = "$TM_DISPLAYNAME — ${CWD/^.*\///}"
+
+## Variables
+
+PATH                 = "/usr/local/bin:$PATH"
+TM_FULLNAME          = "Rick Fletcher"
+TM_ORGANIZATION_NAME = ""
+TM_RUBY              = "/Users/rick/.rvm/bin/rvm-textmate"
+
+## Overrides
+
+# untitled files
+[ attr.untitled ]
+softWrap             = true
+
+# [ "{Capfile,Gemfile,Rakefile}" ]
+# fileType             = "source.ruby"
+
+[ .git/COMMIT_EDITMSG ]
+softWrap             = true
+spellChecking        = true
+
+[ source.java ]
+tabSize              = 4
