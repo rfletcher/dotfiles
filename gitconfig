@@ -39,4 +39,4 @@
   tool = opendiff
 
 [push]
-  default = tracking
+  default = upstream
