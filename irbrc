@@ -32,3 +32,8 @@ class Object
     (self.methods - Object.instance_methods).sort
   end
 end
+
+# pretty print an object as JSON
+def pj( o )
+  puts JSON.pretty_generate( JSON.parse( o.to_json ) )
+end
