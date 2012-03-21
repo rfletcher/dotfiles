@@ -26,6 +26,7 @@
 [core]
   pager = less -rciM
   excludesfile = /Users/rick/.gitignore
+  quotepath = false
 
 [github]
   user = rfletcher
