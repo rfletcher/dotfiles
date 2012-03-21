@@ -1,5 +1,3 @@
-# case insensitive
--i
 --pager=less -RciM
 
 --ignore-dir=log
