@@ -6,7 +6,6 @@
   co = checkout
   com = checkout master
   cp = cherry-pick
-  fixup = !sh -c 'git rebase -i --autosquash head~$1' -
   l = log --date=relative
   ll = !git l --stat
   rb = !grb
