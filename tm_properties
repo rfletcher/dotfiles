@@ -1,24 +1,29 @@
 # see http://wiki.macromates.com/Reference/Settings
 # see http://wiki.macromates.com/Reference/FolderSpecificSettings
 
+binary               = "{*.{class,jar,jpg,png}}"
+
 ## Settings
 
-# binary               = false
 # encoding             = "UTF-8"
-excludeDirectories   = "{$excludeDirectories,log,vendor,tmp}" 
-includeFiles         = "{$includeFiles,.tm_properties,.htaccess,.gitignore}"
+excludeDirectories   = "{$excludeDirectories,log,vendor,tmp}"
+excludeFiles         = "{$excludeFiles,$binary,*.log}"
+includeFiles         = "{$includeFiles,.htaccess,.gitignore,.rvmrc,.tm_properties}"
 # fileChooserGlob      = ""
 # fileType             = "text.plain"
 fontName             = "Inconsolata"
 fontSize             = 11
 showInvisibles       = false
+showWrapColumn       = true
 softTabs             = true
 softWrap             = false
 spellChecking        = false
 spellingLanguage     = "en"
 tabSize              = 2
-theme                = ""
-# windowTitle          = "$TM_DISPLAYNAME — ${CWD/^.*\///}"
+theme                = "C8C58F9A-35FE-44A4-9BC2-2F3C343DC81D"
+# prevent wrapping by default (comments still wrap with softWrap = false)
+wrapColumn           = -1
+
 
 ## Variables
 
@@ -27,18 +32,15 @@ TM_FULLNAME          = "Rick Fletcher"
 TM_ORGANIZATION_NAME = ""
 TM_RUBY              = "/Users/rick/.rvm/bin/rvm-textmate"
 
+
 ## Overrides
 
 # untitled files
-[ attr.untitled ]
-softWrap             = true
-
-# [ "{Capfile,Gemfile,Rakefile}" ]
-# fileType             = "source.ruby"
-
-[ .git/COMMIT_EDITMSG ]
-softWrap             = true
-spellChecking        = true
+# [ attr.untitled ]
+# [ attr.file.unknown-type ]
 
 [ source.java ]
-tabSize              = 4
+tabSize       = 4
+
+[ "{Capfile,Gemfile,Rakefile}" ]
+fileType      = "source.ruby"
