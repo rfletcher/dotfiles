@@ -20,10 +20,10 @@ LS_COLORS="$LS_COLORS:ex=$(_ansi bright);$(_ansi green)"   # executable file
 
 # color by file extension
 
-archives=( tar tgz arg taz lzh zip z Z gz bz2 deb rpm jar rar )
-images=( jpg jpeg gif bmp pbm pgm ppm xbm xpm tif tiff png )
-video=( mpg mpeg fli flv avi mkv gl dl xcf xwd mp4 asf qt mov wmv )
-audio=( ogg mp3 aiff wav wma )
+archives=( arg bz2 deb gz jar lzh rar rpm tar taz tgz Z z zip )
+images=( bmp gif jpeg jpg pbm pgm png ppm tif tiff xbm xpm )
+video=( asf avi dl fli flv gl m4v mkv mov mp4 mpeg mpg qt wmv xcf xwd )
+audio=( aiff flac mp3 ogg wav wma )
 
 for EXTENSION in ${archives[*]}; do
   LS_COLORS="${LS_COLORS}:*.${EXTENSION}=$(_ansi bright);$(_ansi red)"
