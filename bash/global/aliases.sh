@@ -24,6 +24,7 @@ alias rcp='rsync -avzP'
 alias rmv='rcp --remove-source-files'
 alias sc='savecommand'
 alias shell='repl'
+alias sum="paste -s -d + -"
 alias stripansi='perl -ple "s/\033\[(?:\d*(?:;\d+)*)*m//g;"'
 alias toupper='tr [:lower:] [:upper:]'
 alias tolower='tr [:upper:] [:lower:]'
