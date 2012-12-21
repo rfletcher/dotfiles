@@ -10,6 +10,8 @@ export PATH="/usr/local/bin:${PATH}"
 # for the occasional X11 app
 export DISPLAY=:0.0
 
+export RBENV_ROOT=/usr/local/opt/rbenv
+
 # aliases -------------------------------------------------------------------
 
 alias brew-upgrade='brew update && brew upgrade $(brew outdated | cut -d " " -f 1 | grep -v tomcat)'

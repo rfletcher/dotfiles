@@ -30,7 +30,7 @@ wrapColumn           = -1
 PATH                 = "/usr/local/bin:$PATH"
 TM_FULLNAME          = "Rick Fletcher"
 TM_ORGANIZATION_NAME = ""
-TM_RUBY              = "/Users/rick/.rvm/bin/rvm-textmate"
+# TM_RUBY              = "/Users/rick/.rvm/bin/rvm-textmate"
 
 
 ## Overrides

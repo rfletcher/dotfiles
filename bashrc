@@ -39,6 +39,9 @@ shopt -s checkwinsize   # check window dimensions after each command
 
 # init RVM, if present
 [ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# init rbenv, if present
+which -s rbenv && eval "$(rbenv init -)"
 
 # interactive shell?
 if [ "$PS1" ]; then
