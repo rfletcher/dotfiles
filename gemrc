@@ -4,7 +4,7 @@
 #:update_sources: true
 :backtrace: true
 :bulk_threshold: 1000
-gem: -n/usr/local/bin --no-user-install
+gem: --no-user-install
 install: --no-ri --no-rdoc
 update: --no-ri --no-rdoc
 rdoc: --line-numbers # --template=direct
