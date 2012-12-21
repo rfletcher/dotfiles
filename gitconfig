@@ -41,3 +41,10 @@
 
 [push]
   default = upstream
+
+[diff]
+  tool = Kaleidoscope
+[difftool]
+  prompt = false
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
