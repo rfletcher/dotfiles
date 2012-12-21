@@ -12,8 +12,8 @@ export EDITOR=vi
 
 export HOST_CATEGORIES=( personal viglink )
 
-export HOSTS_PERSONAL=( air blur quicksand )
-export HOSTS_VIGLINK=( air )
+export HOSTS_PERSONAL=( air blur quicksand wire )
+export HOSTS_VIGLINK=( air wire )
 
 # bash history --------------------------------------------------------------
 

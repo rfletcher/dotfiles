@@ -6,7 +6,7 @@
 
 # aliases -------------------------------------------------------------------
 
-alias cdb="cd ~/Code/baseballdb"
+alias cdl="cd ~/Code/lineup"
 alias tomcat-start="startup.sh"
 alias tomcat-restart="tomcat-stop && tomcat-start"
 
