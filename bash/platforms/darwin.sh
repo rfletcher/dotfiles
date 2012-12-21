@@ -10,15 +10,17 @@ export PATH="/usr/local/bin:${PATH}"
 # for the occasional X11 app
 export DISPLAY=:0.0
 
+export JAVA_HOME="$(/usr/libexec/java_home)"
 export RBENV_ROOT=/usr/local/opt/rbenv
 
 # aliases -------------------------------------------------------------------
 
-alias brew-upgrade='brew update && brew upgrade $(brew outdated | cut -d " " -f 1 | grep -v tomcat)'
+alias edit='mate'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
 alias top='top -o cpu'
+alias upgrade='brew update && brew upgrade'
 
 # coreutils (alias <cmd> to coreutils' g<cmd>)
 alias expr='gexpr'
