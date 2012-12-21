@@ -20,9 +20,9 @@ softWrap             = false
 spellChecking        = false
 spellingLanguage     = "en"
 tabSize              = 2
-theme                = "C8C58F9A-35FE-44A4-9BC2-2F3C343DC81D"
+# theme                = "C8C58F9A-35FE-44A4-9BC2-2F3C343DC81D"
 # prevent wrapping by default (comments still wrap with softWrap = false)
-wrapColumn           = -1
+# wrapColumn           = -1
 
 
 ## Variables
@@ -40,7 +40,7 @@ TM_ORGANIZATION_NAME = ""
 # [ attr.file.unknown-type ]
 
 [ source.java ]
-tabSize       = 4
+tabSize              = 4
 
 [ "{Capfile,Gemfile,Rakefile}" ]
-fileType      = "source.ruby"
+fileType             = "source.ruby"
