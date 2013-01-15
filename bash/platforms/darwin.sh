@@ -11,12 +11,14 @@ export PATH="/usr/local/bin:${PATH}"
 export DISPLAY=:0.0
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
-export PATH=".bundle/binstubs:$PATH"
+export PATH=".bundle/binstubs:/usr/local/share/npm/bin:$PATH"
 export RBENV_ROOT=/usr/local/opt/rbenv
 
 # aliases -------------------------------------------------------------------
 
+alias _='underscore'
 alias edit='mate'
+alias json='_ pretty'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
