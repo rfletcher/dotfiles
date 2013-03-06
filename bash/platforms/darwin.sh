@@ -4,8 +4,8 @@
 
 # env. variables ------------------------------------------------------------
 
-# put /usr/local/bin in front so Homebrew-installed binaries take precidence
-export PATH="/usr/local/bin:${PATH}"
+# put /usr/local/{s,}bin in front so Homebrew-installed binaries take precidence
+export PATH="/usr/local/bin:/usr/local/bin:${PATH}"
 
 # for the occasional X11 app
 export DISPLAY=:0.0
