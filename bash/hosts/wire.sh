@@ -7,7 +7,7 @@
 # aliases -------------------------------------------------------------------
 
 alias cdl="cd ~/Code/lineup"
-alias tomcat-start="startup.sh"
+alias tomcat-start="JAVA_OPTS='-Xmx1024m' startup.sh"
 alias tomcat-restart="tomcat-stop && tomcat-start"
 
 # functions -----------------------------------------------------------------
@@ -15,9 +15,9 @@ alias tomcat-restart="tomcat-stop && tomcat-start"
 function tomcat-stop() {
   shutdown.sh 2>/dev/null
   if [[ "$?" == 0 ]]; then
-    PID=$(ps | grep -i [j]ava | grep -i Tomcat | awk '{ print $1; }')
+    PID=$(ps aux | grep -i [j]ava | grep -i Tomcat | awk '{ print $2; }')
     if [[ "$PID" != "" ]]; then
-      kill $PID
+      kill -9 $PID
     fi
   fi
   return $?
