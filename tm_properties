@@ -27,10 +27,10 @@ tabSize              = 2
 
 ## Variables
 
-PATH                 = "$HOME/.rbenv/bin:/usr/local/bin:$PATH"
+PATH                 = "/usr/local/opt/rbenv/bin/:/usr/local/bin:$PATH"
 TM_FULLNAME          = "Rick Fletcher"
 TM_ORGANIZATION_NAME = ""
-TM_RUBY              = "$HOME/.rbenv/shims/ruby"
+TM_RUBY              = "/usr/local/opt/rbenv/shims/ruby"
 
 
 ## Overrides
