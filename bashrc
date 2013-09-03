@@ -45,7 +45,11 @@ which rbenv >/dev/null && eval "$(rbenv init -)"
 
 # interactive shell?
 if [ "$PS1" ]; then
-  type "git" >/dev/null && . ~/.bash/completions/git.sh
+  if [[ -d /usr/local/etc/bash_completion.d/ ]]; then
+    for FILE in /usr/local/etc/bash_completion.d/*; do
+      . "$FILE"
+    done
+  fi
 
   . ~/.bash/global/colors.sh
   . ~/.bash/global/prompt.sh

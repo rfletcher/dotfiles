@@ -6,9 +6,10 @@
 
 # show git state in addition to the branch name
 export GIT_PS1_SHOWDIRTYSTATE=1
-# export GIT_PS1_SHOWSTASHSTATE=1
-# export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=
+export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=
 
 ##
 # set default prompt colors
@@ -60,6 +61,6 @@ ${PREFIX}\
 \[$(color ${C_HOST})\]\h\
 \[$(color ${C_COLON})\]:\
 \[\$(color \$(get_pwd_color))\]\w\
-\[$(color ${C_BRANCH})\]\$(__git_ps1 ' %s')\
+\[$(color ${C_BRANCH})\]\$(__git_ps1 ' %s' | sed 's/=$//')\
 \[$(color ${C_END_CHAR})\]\$ \
 \[$(color off)\]"
