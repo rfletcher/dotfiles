@@ -12,7 +12,7 @@ export DISPLAY=:0.0
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export PATH=".bundle/binstubs:/usr/local/share/npm/bin:$PATH"
-export RBENV_ROOT=/usr/local/opt/rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
 
 # aliases -------------------------------------------------------------------
 
