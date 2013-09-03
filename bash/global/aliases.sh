@@ -179,7 +179,7 @@ function geoip() {
   if [ -z "$IP" ]; then
     IP=$(wgetd icanhazip.com)
   fi
-  body "http://www.datasciencetoolkit.org/ip2coordinates/67.169.73.113" | json
+  body "http://www.datasciencetoolkit.org/ip2coordinates/${IP}" | json
 }
 
 ##
