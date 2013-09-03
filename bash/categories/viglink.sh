@@ -4,16 +4,53 @@
 
 # env. variables -------------------------------------------------------
 
+export VL_ROLE=rick
 export VL_WORKSPACE=~/Code/viglink
 
 # aliases --------------------------------------------------------------
 
-alias cdv="cd $VL_WORKSPACE";
+alias cdv="cd ${VL_WORKSPACE}";
+alias cdvj="cdv && cd viglink-javascript";
+alias cdvr="cdv && cd viglink-rails/src/main/rails";
+alias cdvw="cdv && cd viglink-web";
 
-alias vl-build="pushd ${VL_WORKSPACE}/viglink-web && ant && ant app.compile && mvn install -Dmaven.test.skip=true && popd"
-alias vl-build-all="pushd ${VL_WORKSPACE} && mvn install -Dmaven.test.skip=true && vl-build"
-alias vl-clean="pushd ${VL_WORKSPACE} && mvn clean && pushd viglink-web && ant app.clean && mvn clean && popd && popd"
-alias vl-reload="vl-build && tomcat-restart"
-alias vl-reload-clean="vl-clean && vl-build-all && tomcat-restart"
+alias mvn-install="mvn install -Dmaven.test.skip=true -DskipTests"
+
+alias vl-clean="pushd ${VL_WORKSPACE} && mvn clean && popd"
+alias vl-reload-clean="vl-clean && vl-reload"
 
 # functions ------------------------------------------------------------
+
+function vl-build() {
+    local MODULE="$1"
+    local CLEAN="${2:-0}"
+
+    cdv
+
+    if [[ "$MODULE" != "" ]]; then
+        pushd "viglink-${MODULE}"
+    fi
+
+    if [[ "$CLEAN" == "1" ]]; then
+        mvn clean
+    fi
+
+    mvn-install
+    local RESULT=$?
+
+    if [[ "$MODULE" != "" ]]; then
+        popd
+    fi
+
+    return $RESULT
+}
+
+function vl-reload() {
+    vl-build common &&
+    vl-build domain &&
+    vl-build utils &&
+    vl-build web &&
+    tomcat-restart
+
+    return $?
+}
