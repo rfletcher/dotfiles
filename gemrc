@@ -5,6 +5,6 @@
 :backtrace: true
 :bulk_threshold: 1000
 gem: --no-user-install
-install: --no-ri --no-rdoc
-update: --no-ri --no-rdoc
-rdoc: --line-numbers # --template=direct
+install: --no-ri
+update: --no-ri
+#rdoc: --line-numbers # --template=direct
