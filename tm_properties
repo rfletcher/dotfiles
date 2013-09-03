@@ -1,36 +1,38 @@
 # see http://wiki.macromates.com/Reference/Settings
 # see http://wiki.macromates.com/Reference/FolderSpecificSettings
 
-binary               = "{*.{class,jar,jpg,png}}"
+binary                = "{*.{bin,class,jar,jpg,png}}"
 
 ## Settings
 
 # encoding             = "UTF-8"
-excludeDirectories   = "{$excludeDirectories,log,vendor,tmp}"
-excludeFiles         = "{$excludeFiles,$binary,*.log}"
-includeFiles         = "{$includeFiles,.htaccess,.gitignore,.rvmrc,.tm_properties}"
-# fileChooserGlob      = ""
-# fileType             = "text.plain"
-fontName             = "Inconsolata"
-fontSize             = 11
-showInvisibles       = false
-showWrapColumn       = true
-softTabs             = true
-softWrap             = false
-spellChecking        = false
-spellingLanguage     = "en"
-tabSize              = 2
-# theme                = "C8C58F9A-35FE-44A4-9BC2-2F3C343DC81D"
+excludeDirectories    = "{$excludeDirectories,log,vendor,tmp}"
+excludeInFileChooser  = "{$excludeInFileChooser,target}"
+excludeInFolderSearch = "{$excludeInFolderSearch,target}"
+excludeFiles          = "{$excludeFiles,$binary,*.log}"
+includeFiles          = "{$includeFiles,.htaccess,.gitignore,.rvmrc,.tm_properties}"
+# fileChooserGlob       = ""
+# fileType              = "text.plain"
+fontName              = "Inconsolata"
+fontSize              = 11
+showInvisibles        = false
+showWrapColumn        = true
+softTabs              = true
+softWrap              = false
+spellChecking         = false
+spellingLanguage      = "en"
+tabSize               = 2
+# theme                 = "C8C58F9A-35FE-44A4-9BC2-2F3C343DC81D"
 # prevent wrapping by default (comments still wrap with softWrap = false)
-# wrapColumn           = -1
+# wrapColumn            = -1
 
 
 ## Variables
 
-PATH                 = "/usr/local/opt/rbenv/bin/:/usr/local/bin:$PATH"
-TM_FULLNAME          = "Rick Fletcher"
-TM_ORGANIZATION_NAME = ""
-TM_RUBY              = "/usr/local/opt/rbenv/shims/ruby"
+PATH                  = "/usr/local/var/rbenv/shims:/usr/local/bin:$PATH"
+TM_FULLNAME           = "Rick Fletcher"
+TM_ORGANIZATION_NAME  = ""
+TM_RUBY               = "/usr/local/opt/rbenv/shims/ruby"
 
 
 ## Overrides
@@ -40,7 +42,7 @@ TM_RUBY              = "/usr/local/opt/rbenv/shims/ruby"
 # [ attr.file.unknown-type ]
 
 [ source.java ]
-tabSize              = 4
+tabSize               = 4
 
 [ "{Capfile,Gemfile,Rakefile}" ]
-fileType             = "source.ruby"
+fileType              = "source.ruby"
