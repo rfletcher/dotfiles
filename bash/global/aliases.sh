@@ -187,7 +187,7 @@ function geoip() {
 #
 # usage: extract <file>
 #
-function ex() {
+function extract() {
   if [ -f "$1" ] ; then
     case "$1" in
       *.tar)            tar xvf "$1"  ;;
