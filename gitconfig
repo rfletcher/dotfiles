@@ -9,6 +9,7 @@
   cp = cherry-pick
   l = log --date=relative
   ll = !git l --stat
+  pull = pull --ff-only
   rb = !grb
   repush = !git pull --rebase && git push
   sm = submodule
