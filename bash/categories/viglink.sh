@@ -46,9 +46,11 @@ function vl-build() {
 }
 
 function vl-reload() {
-    vl-build common &&
-    vl-build domain &&
+    vl-build core &&
     vl-build utils &&
+    vl-build common &&
+    vl-build hadoop &&
+    vl-build domain &&
     vl-build web &&
     tomcat-restart
 
