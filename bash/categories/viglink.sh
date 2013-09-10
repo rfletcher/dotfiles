@@ -35,7 +35,7 @@ function vl-build() {
         mvn clean
     fi
 
-    mvn-install
+    mvn install -DskipTests
     local RESULT=$?
 
     if [[ "$MODULE" != "" ]]; then
