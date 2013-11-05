@@ -11,7 +11,9 @@ export VL_WORKSPACE=~/Code/viglink
 
 alias cdv="cd ${VL_WORKSPACE}";
 alias cdvj="cdv && cd viglink-javascript";
+alias cdvp="cdv && cd puppet";
 alias cdvr="cdv && cd viglink-rails/src/main/rails";
+alias cdvv="cdv && cd vagrant";
 alias cdvw="cdv && cd viglink-web";
 
 alias mvn-install="mvn install -Dmaven.test.skip=true -DskipTests"
