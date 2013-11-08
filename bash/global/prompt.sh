@@ -54,6 +54,13 @@ if [[ "$EUID" == "0" ]]; then
 fi
 
 ##
+# include git info, if available
+#
+if type __git_ps1 >/dev/null 2>&1; then
+  GIT_PS1="\$(__git_ps1 ' %s' | sed 's/=$//')"
+fi
+
+##
 # set the prompt
 #
 export PS1="\
@@ -61,6 +68,6 @@ ${PREFIX}\
 \[$(color ${C_HOST})\]\h\
 \[$(color ${C_COLON})\]:\
 \[\$(color \$(get_pwd_color))\]\w\
-\[$(color ${C_BRANCH})\]\$(__git_ps1 ' %s' | sed 's/=$//')\
+\[$(color ${C_BRANCH})\]${GIT_PS1}\
 \[$(color ${C_END_CHAR})\]\$ \
 \[$(color off)\]"
