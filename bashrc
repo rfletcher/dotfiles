@@ -37,12 +37,6 @@ shopt -s checkwinsize   # check window dimensions after each command
 . ~/.bash/global/aliases.sh
 . ~/.bash/global/non-global.sh
 
-# init RVM, if present
-[ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-# init rbenv, if present
-which rbenv >/dev/null && eval "$(rbenv init -)"
-
 # interactive shell?
 if [ "$PS1" ]; then
   if [[ -d /usr/local/etc/bash_completion.d/ ]]; then
