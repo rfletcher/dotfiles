@@ -11,7 +11,7 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 # for the occasional X11 app
 export DISPLAY=:0.0
 
-export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
 export RBENV_ROOT=/usr/local/var/rbenv
 export PATH=".bundle/binstubs:${RBENV_ROOT}/shims:/usr/local/share/npm/bin:$PATH"
 
