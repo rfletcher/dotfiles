@@ -23,7 +23,6 @@ alias now='date +"%F %H:%M %z"'
 alias realpath='readlink -f'
 alias rcp='rsync -avP'
 alias rmv='rcp --remove-source-files'
-alias sc='savecommand'
 alias shell='repl'
 alias sum="tr ' ' \"\n\" | paste -s -d + - | bc"
 alias stripansi='perl -ple "s/\033\[(?:\d*(?:;\d+)*)*m//g;"'
