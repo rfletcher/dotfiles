@@ -6,55 +6,17 @@
 
 export VL_ROLE=rick
 export VL_WORKSPACE=~/Code/viglink
+# for `vig config`
+export VIG_CONFIG="${VL_WORKSPACE}/viglink-config/viglink-hiera/src/main/resources/data/static.yaml"
 
 # aliases --------------------------------------------------------------
 
-alias cdv="cd ${VL_WORKSPACE}";
-alias cdvj="cdv && cd viglink-javascript";
-alias cdvp="cdv && cd puppet";
-alias cdvr="cdv && cd viglink-rails/src/main/rails";
-alias cdvv="cdv && cd vagrant";
-alias cdvw="cdv && cd viglink-web";
-
-alias mvn-install="mvn install -Dmaven.test.skip=true -DskipTests"
-
-alias vl-clean="pushd ${VL_WORKSPACE} && mvn clean && popd"
-alias vl-reload-clean="vl-clean && vl-reload"
+alias cdv="cd ${VL_WORKSPACE}"
+alias cdvc="cd ${VL_WORKSPACE}/viglink-config"
+alias cdvh="cd ${VL_WORKSPACE}/viglink-config/viglink-hiera"
+alias cdvj="cd ${VL_WORKSPACE}/viglink/viglink-javascript"
+alias cdvp="cd ${VL_WORKSPACE}/viglink-config/viglink-puppet"
+alias cdvr="cd ${VL_WORKSPACE}/viglink-rundeck"
+alias cdvv="cd ${VL_WORKSPACE}/viglink-vagrant"
 
 # functions ------------------------------------------------------------
-
-function vl-build() {
-    local MODULE="$1"
-    local CLEAN="${2:-0}"
-
-    cdv
-
-    if [[ "$MODULE" != "" ]]; then
-        pushd "viglink-${MODULE}"
-    fi
-
-    if [[ "$CLEAN" == "1" ]]; then
-        mvn clean
-    fi
-
-    mvn install -DskipTests
-    local RESULT=$?
-
-    if [[ "$MODULE" != "" ]]; then
-        popd
-    fi
-
-    return $RESULT
-}
-
-function vl-reload() {
-    vl-build core &&
-    vl-build utils &&
-    vl-build common &&
-    vl-build hadoop &&
-    vl-build domain &&
-    vl-build web &&
-    tomcat-restart
-
-    return $?
-}
