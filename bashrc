@@ -12,7 +12,7 @@ export EDITOR=vi
 
 export HOST_CATEGORIES=( personal viglink )
 
-export HOSTS_PERSONAL=( blur quicksand wire )
+export HOSTS_PERSONAL=( blur storage quicksand wire )
 export HOSTS_VIGLINK=( wire )
 
 # bash history --------------------------------------------------------------
@@ -46,5 +46,6 @@ if [ "$PS1" ]; then
   fi
 
   . ~/.bash/global/colors.sh
+  . ~/.bash/global/integrations.sh
   . ~/.bash/global/prompt.sh
 fi
