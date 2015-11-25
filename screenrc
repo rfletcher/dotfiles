@@ -6,7 +6,9 @@ startup_message off
 autodetach on
 vbell on
 
+shell -$SHELL
+
 caption always
 
-# Forget where I got this.  It's not the prettiest thing in the world, but I can't be bothered to fix this mess.
+# Forget where I got this.  It's not the prettiest thing in the world, but I can't be bothered to clean it up.
 hardstatus alwayslastline "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"
