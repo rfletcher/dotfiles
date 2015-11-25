@@ -8,6 +8,7 @@
 
 PLATFORM=$(uname -s | tolower)
 HOSTNAME=$(uname -n | sed 's/\..*//' | tolower)
+test -f /etc/synoinfo.conf && DISTRIBUTION="synology"
 type lsb_release &> /dev/null && DISTRIBUTION=$(lsb_release -i | cut -f 2 | tolower)
 
 ## include any host-, platform-, or distribution-specific files
