@@ -1,7 +1,7 @@
 # see http://wiki.macromates.com/Reference/Settings
 # see http://wiki.macromates.com/Reference/FolderSpecificSettings
 
-binary                = "{*.{bin,class,jar,jpg,png}}"
+binary                = "{*.{bin,class,exe,jar,jpg,png}}"
 
 ## Settings
 
