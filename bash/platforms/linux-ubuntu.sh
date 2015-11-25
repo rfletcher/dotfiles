@@ -8,8 +8,7 @@
 
 alias js='smjs'
 alias rsync='rsync --skip-compress=avi/mp3/mkv'
-# fix backspace in Ubuntu screen
-# (found: http://ubuntuforums.org/showthread.php?t=90910)
+# fix backspace (found: http://ubuntuforums.org/showthread.php?t=90910)
 alias screen='TERM=screen screen'
 alias upgrade='echo "apt-get update && \
   apt-get -y upgrade && \
