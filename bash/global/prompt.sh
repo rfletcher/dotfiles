@@ -48,7 +48,7 @@ get_pwd_color() {
 #
 if [[ "$EUID" == "0" ]]; then
   # ...add a red exclamation prefix
-  PREFIX="$(color red)!$(color off)"
+  PREFIX="\[$(color red)\]!\[$(color off)\]"
   # ...set the host color to red
   # C_HOST="red"
 fi
@@ -65,9 +65,9 @@ fi
 #
 export PS1="\
 ${PREFIX}\
-$(color ${C_HOST})\h\
-$(color ${C_COLON}):\
-\$(color \$(get_pwd_color))\w\
-$(color ${C_BRANCH})${GIT_PS1}\
-$(color ${C_END_CHAR})\$ \
-$(color off)"
+\[$(color ${C_HOST})\]\h\
+\[$(color ${C_COLON})\]:\
+\[\$(color \$(get_pwd_color))\]\w\
+\[$(color ${C_BRANCH})\]${GIT_PS1}\
+\[$(color ${C_END_CHAR})\]\$ \
+\[$(color off)\]"
