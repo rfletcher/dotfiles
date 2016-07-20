@@ -14,6 +14,7 @@ alias freq='sort | uniq -c | graph'
 alias get='curl -s -D -'
 alias graph='awk '"'"'!max{max=$1;}{r="";i=s=60*$1/max;while(i-->0)r=r"#";printf "%15s %5d %s %s",$2,$1,r,"\n";}'"'"
 alias headers='get -o /dev/null'
+alias ip='wgetd http://checkip.amazonaws.com'
 alias json='python -mjson.tool'
 alias less='less -RciM'
 alias ls='ls --color'
@@ -178,9 +179,11 @@ function color() {
 #
 function geoip() {
   IP="$1"
+
   if [ -z "$IP" ]; then
-    IP=$(wgetd icanhazip.com)
+    IP=$(ip)
   fi
+
   body "http://www.datasciencetoolkit.org/ip2coordinates/${IP}" | json
 }
 
