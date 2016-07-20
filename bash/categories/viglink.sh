@@ -17,6 +17,7 @@ alias cdvh="cd ${VL_WORKSPACE}/viglink-config/viglink-hiera"
 alias cdvj="cd ${VL_WORKSPACE}/viglink/viglink-javascript"
 alias cdvp="cd ${VL_WORKSPACE}/viglink-config/viglink-puppet"
 alias cdvr="cd ${VL_WORKSPACE}/viglink-rundeck"
+alias cdvt="cd ${VL_WORKSPACE}/viglink-config/viglink-terraform"
 alias cdvv="cd ${VL_WORKSPACE}/viglink-vagrant"
 
 # functions ------------------------------------------------------------
