@@ -7,6 +7,7 @@
 # aliases --------------------------------------------------------------
 
 alias ..='cd ..'
+alias beep='echo -ne "\a"'
 alias body='curl -s'
 alias epoch='date +%s'
 alias grep='grep --color=auto'
