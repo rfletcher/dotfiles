@@ -17,6 +17,7 @@
   staged = diff --cached
   stashed = "!for NAME in $(git stash list | cut -d : -f 1); do echo \"$NAME\"; git show \"$NAME\"; done"
   su = sm update
+  up = pull --rebase --autostash
   unchanged = update-index --assume-unchanged
   unstage = reset HEAD --
   unpack-refs = "!bash -c 'IFS=$''\\n''; for f in $(git show-ref --heads); do /bin/echo ''Writing  '' $(echo $f | cut -c42-); echo $(echo $f | cut -c1-40) > \"${GIT_DIR:-.git}/$(echo $f | cut -c42-)\"; done'"
