@@ -60,11 +60,11 @@
   cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 
 [gc]
-	auto = 0
+  auto = 0
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
 
 [mergetool]
-	prompt = false
+  prompt = false
