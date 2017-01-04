@@ -26,8 +26,6 @@ alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
 alias top='top -o cpu'
 alias upgrade='brew update && brew upgrade --all'
-# work around a vagrant bug: https://github.com/mitchellh/vagrant/issues/4930
-alias vagrant-destroy-all='vagrant destroy $(vagrant status | grep vmware_fusion | grep -v "not created" | awk "{ print \$1 }")'
 
 # coreutils (alias <cmd> to coreutils' g<cmd>)
 alias expr='gexpr'
