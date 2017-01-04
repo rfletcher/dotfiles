@@ -13,7 +13,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # put /usr/local/{s,}bin in front so Homebrew-installed binaries take precidence
-export PATH="/usr/local/bin:/usr/local/bin:${PATH}"
+export PATH="${HOME}/bin:/usr/local/bin:/usr/local/bin:${PATH}"
 # extend the PATH
 export PATH="${RBENV_ROOT}/shims:${NPM_ROOT}/bin:${PATH}"
 
