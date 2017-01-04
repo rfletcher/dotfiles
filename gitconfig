@@ -1,6 +1,7 @@
 [alias]
   alias = !sh -c 'git config --get alias.$1' -
   b = branch
+  cdiff = diff --word-diff=color --word-diff-regex=.
   ci = commit
   cia = commit --amend -C HEAD
   cis = commit -m 'Update submodule'
