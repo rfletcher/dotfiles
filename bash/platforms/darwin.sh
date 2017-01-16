@@ -18,7 +18,7 @@ export PATH="${RBENV_ROOT}/shims:${NPM_ROOT}/bin:${PATH}"
 
 # aliases -------------------------------------------------------------------
 
-alias _='underscore'
+alias df='df -T hfs'
 alias edit='mate'
 alias json='_ pretty'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
