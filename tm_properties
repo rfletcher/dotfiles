@@ -6,7 +6,7 @@ binary                = "{*.{bin,class,exe,jar,jpg,png}}"
 ## Settings
 
 # encoding             = "UTF-8"
-excludeDirectories    = "{$excludeDirectories,log,vendor,tmp}"
+excludeDirectories    = "{$excludeDirectories,vendor,tmp}"
 excludeInFileChooser  = "{$excludeInFileChooser,target}"
 excludeInFolderSearch = "{$excludeInFolderSearch,target}"
 excludeFiles          = "{$excludeFiles,$binary,*.log}"
