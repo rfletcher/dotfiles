@@ -20,6 +20,7 @@ C_HOST="off"
 C_COLON="off"
 C_BRANCH="cyan"
 C_END_CHAR="off"
+C_EXIT_NONZERO="red"
 
 C_DIR_OWNER="green"
 C_DIR_WRITABLE="cyan"
@@ -44,6 +45,21 @@ get_pwd_color() {
 }
 
 ##
+# show the exit status of the last command, if nonzero
+#
+show_exit_status() {
+  STATUS="$1"
+
+  if [[ "$STATUS" != "" ]] && [[ "$STATUS" != "0" ]]; then
+    echo " $(color off)$(color ${C_EXIT_NONZERO})[${STATUS}]$(color off)"
+  fi
+}
+
+set_vars() {
+  STATUS="$?"
+}
+
+##
 # alter the prompt when running as root
 #
 if [[ "$EUID" == "0" ]]; then
@@ -60,6 +76,8 @@ if type __git_ps1 >/dev/null 2>&1; then
   GIT_PS1="\$(__git_ps1 ' %s' | sed 's/=$//')"
 fi
 
+PROMPT_COMMAND=set_vars
+
 ##
 # set the prompt
 #
@@ -69,5 +87,6 @@ ${PREFIX}\
 \[$(color ${C_COLON})\]:\
 \[\$(color \$(get_pwd_color))\]\w\
 \[$(color ${C_BRANCH})\]${GIT_PS1}\
+\$(show_exit_status \$STATUS)\
 \[$(color ${C_END_CHAR})\]\$ \
 \[$(color off)\]"
