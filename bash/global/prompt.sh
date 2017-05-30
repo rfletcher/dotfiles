@@ -30,8 +30,6 @@ C_DIR_NOWRITE="red"
 export C_DIR_OWNER C_DIR_WRITABLE C_DIR_NOWRITE
 
 ##
-# pwd color
-#
 # get the color code for the current directory
 #
 get_pwd_color() {
