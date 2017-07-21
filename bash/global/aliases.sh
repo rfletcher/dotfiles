@@ -283,6 +283,18 @@ function hosts() {
 }
 
 ##
+# convert a json array of objects to a list of some property's value
+#
+# usage:
+#   $ echo '[{"some_prop":"foo"}, {"some_prop":"bar"}]' | jsonmap some_prop;
+#   foo
+#   bar
+#
+function jsonmap() {
+  cat - | jq -r --arg prop "$1" 'map(.[$prop]) | .[]'
+}
+
+##
 # test whether a domain is registered
 #
 # usage: echo foo bar | registered
