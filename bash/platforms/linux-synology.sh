@@ -2,6 +2,8 @@
 # env. setup for Synology
 #
 
+test -f /opt/etc/profile && . /opt/etc/profile
+
 # env. variables ------------------------------------------------------------
 
 export GIT_SSH="/usr/bin/ssh"
