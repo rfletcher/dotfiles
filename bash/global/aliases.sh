@@ -31,8 +31,8 @@ alias sum="tr ' ' \"\n\" | paste -s -d + - | bc"
 alias stripansi='perl -ple "s/\033\[(?:\d*(?:;\d+)*)*m//g;"'
 alias toupper='tr [:lower:] [:upper:]'
 alias tolower='tr [:upper:] [:lower:]'
-alias urlencode='perl -MURI::Escape -ne "\$/=\"\"; print uri_escape \$_"'
-alias urldecode='perl -MURI::Escape -ne "\$/=\"\"; print uri_unescape \$_"'
+alias urlencode='python -c "import sys,urllib;sys.stdout.write(urllib.quote_plus(sys.stdin.read()))"'
+alias urldecode='python -c "import sys,urllib;sys.stdout.write(urllib.unquote_plus(sys.stdin.read()))"'
 alias wgetd='wget -O - --quiet'
 
 # fix typos
