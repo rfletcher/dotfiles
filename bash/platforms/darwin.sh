@@ -12,7 +12,7 @@ export NPM_ROOT=/usr/local/share/npm
 
 export HOMEBREW_NO_ANALYTICS=1
 # put /usr/local/{s,}bin in front so Homebrew-installed binaries take precidence
-export PATH="${HOME}/bin:/usr/local/bin:/usr/local/bin:${PATH}"
+export PATH="${HOME}/bin:/usr/local/sbin:/usr/local/bin:${PATH}"
 # extend the PATH
 export PATH=".bundle/binstubs:${PATH}"
 export PATH="${NPM_ROOT}/bin:${PATH}"
