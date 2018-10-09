@@ -9,12 +9,12 @@ export DISPLAY=:0.0
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.7 2>/dev/null)"
 export NPM_ROOT=/usr/local/share/npm
-export RBENV_ROOT=/usr/local/var/rbenv
 
 # put /usr/local/{s,}bin in front so Homebrew-installed binaries take precidence
 export PATH="${HOME}/bin:/usr/local/bin:/usr/local/bin:${PATH}"
 # extend the PATH
-export PATH="${RBENV_ROOT}/shims:${NPM_ROOT}/bin:${PATH}"
+export PATH=".bundle/binstubs:${PATH}"
+export PATH="${NPM_ROOT}/bin:${PATH}"
 
 # aliases -------------------------------------------------------------------
 

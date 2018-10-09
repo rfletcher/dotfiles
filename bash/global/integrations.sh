@@ -10,5 +10,8 @@
 # aws
 which aws &>/dev/null && complete -C aws_completer aws
 
+# rbenv
+which rbenv &>/dev/null && eval "$(rbenv init -)"
+
 # vig
 which vig &>/dev/null && eval "$(vig init 2>&1)"
