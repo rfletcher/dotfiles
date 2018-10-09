@@ -10,6 +10,7 @@ export DISPLAY=:0.0
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.7 2>/dev/null)"
 export NPM_ROOT=/usr/local/share/npm
 
+export HOMEBREW_NO_ANALYTICS=1
 # put /usr/local/{s,}bin in front so Homebrew-installed binaries take precidence
 export PATH="${HOME}/bin:/usr/local/bin:/usr/local/bin:${PATH}"
 # extend the PATH
