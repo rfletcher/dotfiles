@@ -28,6 +28,12 @@ if which brew &>/dev/null; then
   fi
 fi
 
+# pipx: https://pypi.org/project/pipx
+if which pipx &>/dev/null; then
+  export PIPX_HOME=/usr/local/var/pipx
+  export PIPX_BIN_DIR=/usr/local/bin
+fi
+
 # rbenv
 which rbenv &>/dev/null && eval "$(rbenv init -)"
 

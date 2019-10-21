@@ -24,7 +24,7 @@ alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias sort='sort -k 1,1'
 alias top='top -o cpu'
-alias upgrade="brew update && brew upgrade && brew cask upgrade"
+alias upgrade="brew update && brew upgrade && brew cask upgrade; pipx upgrade-all 2>/dev/null"
 
 # coreutils (alias <cmd> to coreutils' g<cmd>)
 alias expr='gexpr'
