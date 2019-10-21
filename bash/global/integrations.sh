@@ -10,6 +10,14 @@
 # aws
 which aws &>/dev/null && complete -C aws_completer aws
 
+# hass-cli: https://github.com/home-assistant/home-assistant-cli
+if which hass-cli &>/dev/null; then
+  export HASS_SERVER="(not committed)"
+  export HASS_TOKEN="(not committed)"
+
+  eval "$(hass-cli completion bash)"
+fi
+
 # homebrew
 export HOMEBREW_NO_ANALYTICS=1
 if which brew &>/dev/null; then

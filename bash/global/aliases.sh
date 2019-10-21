@@ -14,6 +14,7 @@ alias grep='grep --color=auto'
 alias freq='sort | uniq -c | graph'
 alias get='curl -s -D -'
 alias graph='awk '"'"'!max{max=$1;}{r="";i=s=60*$1/max;while(i-->0)r=r"#";printf "%15s %5d %s %s",$2,$1,r,"\n";}'"'"
+alias hass='hass-cli'
 alias headers='get -o /dev/null'
 alias ip='wgetd http://checkip.amazonaws.com'
 alias less='less -RciM'
