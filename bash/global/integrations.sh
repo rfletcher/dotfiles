@@ -35,7 +35,9 @@ if which pipx &>/dev/null; then
 fi
 
 # rbenv
-which rbenv &>/dev/null && eval "$(rbenv init -)"
+if which rbenv &>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # vig
 which vig &>/dev/null && eval "$(vig init 2>&1)"

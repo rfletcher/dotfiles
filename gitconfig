@@ -8,7 +8,8 @@
   co = checkout
   com = checkout master
   cp = cherry-pick
-  home = hub
+  home = !hub browse
+  hub = !hub
   l = log --date=relative
   ll = !git l --stat
   pull = pull --ff-only

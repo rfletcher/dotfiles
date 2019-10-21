@@ -35,7 +35,6 @@ shopt -s checkwinsize   # check window dimensions after each command
 # extras --------------------------------------------------------------------
 
 . ~/.bash/global/aliases.sh
-. ~/.bash/global/non-global.sh
 
 # interactive shell?
 if [ "$PS1" ]; then
@@ -51,6 +50,3 @@ if [ "$PS1" ]; then
 fi
 
 . ~/.bash/global/non-global.sh
-
-# added by pipx (https://github.com/cs01/pipx)
-export PATH="/Users/rick/.local/bin:$PATH"
