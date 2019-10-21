@@ -49,3 +49,8 @@ if [ "$PS1" ]; then
   . ~/.bash/global/integrations.sh
   . ~/.bash/global/prompt.sh
 fi
+
+. ~/.bash/global/non-global.sh
+
+# added by pipx (https://github.com/cs01/pipx)
+export PATH="/Users/rick/.local/bin:$PATH"
