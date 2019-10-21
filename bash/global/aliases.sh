@@ -295,6 +295,23 @@ function jsonmap() {
 }
 
 ##
+# prompt for, read, and print a secret. useful for providing sensitive values
+# as command line options without ever displaying them in the terminal.
+#
+# (this is *not* secure, but it's good enough for screen sharing)
+#
+# usage:
+#   $ some-command "$(readsecret)"
+#
+function readsecret() {
+  local SECRET
+
+  read -r -s -p "Secret: " SECRET
+
+  echo -n "$SECRET"
+}
+
+##
 # test whether a domain is registered
 #
 # usage: echo foo bar | registered
