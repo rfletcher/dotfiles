@@ -20,12 +20,10 @@ fi
 
 # homebrew
 export HOMEBREW_NO_ANALYTICS=1
-if which brew &>/dev/null; then
-  if [[ -d /opt/homebrew ]]; then
-    eval "$(brew shellenv | sed 's|/opt/homebrew|/home/linuxbrew/.linuxbrew|')"
-  elif [[ -x /usr/local/bin/brew ]]; then
-    eval "$(brew shellenv)"
-  fi
+if [[ -d /opt/homebrew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv | sed 's|/opt/homebrew|/home/linuxbrew/.linuxbrew|')"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 # pipx: https://pypi.org/project/pipx
