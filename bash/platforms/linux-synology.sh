@@ -15,6 +15,5 @@ export PATH="/opt/sbin:/opt/bin:${PATH}"
 # `ls` doesn't support -o
 alias ll='l -l'
 alias screen='TERM=xterm screen'
-alias upgrade='echo "opkg update && opkg upgrade" | sudo bash'
 
 # functions -----------------------------------------------------------------

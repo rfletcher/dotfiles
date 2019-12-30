@@ -6,37 +6,39 @@
 
 # aliases --------------------------------------------------------------
 
+# general
 alias ..='cd ..'
 alias beep='echo -ne "\a"'
-alias body='curl -s'
 alias epoch='date +%s'
-alias freq='sort | uniq -c | graph'
-alias get='curl -s -D -'
-alias graph='awk '"'"'!max{max=$1;}{r="";i=s=60*$1/max;while(i-->0)r=r"#";printf "%15s %5d %s %s",$2,$1,r,"\n";}'"'"
 alias grep='grep --color=auto'
 alias hass='hass-cli'
-alias headers='get -o /dev/null'
-alias ip='wgetd http://checkip.amazonaws.com'
+alias ip='body http://checkip.amazonaws.com'
 alias less='less -RciM'
 alias ls='ls --color'
 alias l='ls -hF'
 alias ll='l -o'
 alias llg='l -l'
 alias natsort='php -r "\$a = file(\"php://stdin\"); natsort(\$a); print join(\$a);"'
-alias now='date +"%F %H:%M %z"'
 alias realpath='readlink -f'
 alias rcp='rsync -avP'
 alias rmv='rcp --remove-source-files'
-alias shell='repl'
-alias sum="tr ' ' \"\n\" | paste -s -d + - | bc"
 alias stripansi='perl -ple "s/\033\[(?:\d*(?:;\d+)*)*m//g;"'
-alias toupper='tr [:lower:] [:upper:]'
+alias sum="tr ' ' \"\n\" | paste -s -d + - | bc"
 alias tolower='tr [:upper:] [:lower:]'
+alias toupper='tr [:lower:] [:upper:]'
+
+# http
+alias body='curl -s'
+alias get='curl -s -D -'
+alias headers='get -o /dev/null'
 alias urlencode='python -c "import sys,urllib;sys.stdout.write(urllib.quote_plus(sys.stdin.read()))"'
 alias urldecode='python -c "import sys,urllib;sys.stdout.write(urllib.unquote_plus(sys.stdin.read()))"'
-alias wgetd='wget -O - --quiet'
 
-# fix typos
+# visualization
+alias freq='sort | uniq -c | graph'
+alias graph='awk '"'"'!max{max=$1;}{r="";i=s=60*$1/max;while(i-->0)r=r"#";printf "%15s %5d %s %s",$2,$1,r,"\n";}'"'"
+
+# typos
 alias snv='svn'
 
 # functions ------------------------------------------------------------
@@ -68,6 +70,13 @@ function _ansi() {
 }
 
 ##
+# test whether a command is in the $PATH
+#
+function _has_command() {
+  which "$1" >/dev/null 2>&1
+}
+
+##
 # test whether a value exists in an array
 #
 # usage: COLORS=( red blue ); _in_array COLORS red && echo "found!"
@@ -88,7 +97,8 @@ function _in_array() {
 function cbase() {
   echo "obase=$2;ibase=$1;$3" | bc
 }
-# some shortcuts
+
+# some cbase shortcuts
 alias bin2dec='cbase 2 10'
 alias dec2bin='cbase 10 2'
 alias dec2hex='cbase 10 16'
@@ -227,24 +237,6 @@ function forn() {
 }
 
 ##
-# append a command to the bash history without executing it
-#
-# scenario: you've typed out a long command and realized you need to do
-#   something else before running it.  ^a and prefix with "savecommand".
-#
-# usage:
-#   $ savecommand echo foo
-#   (do something else)
-#   $ !echo
-
-function savecommand() {
-  history -d $(history 1 | awk '{print $1}')
-  history -a
-  echo "$@" >> "$HISTFILE"
-  history -r
-}
-
-##
 # list hostnames of machines on which I have an account
 #
 # -p    return only personal hosts
@@ -336,6 +328,23 @@ function registered() {
 }
 
 ##
+# append a command to the bash history without executing it
+#
+# scenario: you've typed out a long command and realized you need to do
+#   something else before running it. ^a and prefix with "savecommand".
+#
+# usage:
+#   $ savecommand echo foo
+#   (do something else)
+#   $ !echo
+function savecommand() {
+  history -d $(history 1 | awk '{print $1}')
+  history -a
+  echo "$@" >> "$HISTFILE"
+  history -r
+}
+
+##
 # start or resume a screen session, optionally loading a session-specific
 # configuration from ~/.screen/<sessionname>.screenrc
 #
@@ -422,4 +431,26 @@ function trim() {
   fi
 
   echo "$INPUT"
+}
+
+##
+# Upgrade installed software
+#
+function upgrade() {
+  if _has_command apt-get; then
+    sudo apt-get update &&
+    sudo apt-get -y upgrade &&
+    sudo apt-get -y dist-upgrade &&
+    sudo apt-get -y autoremove
+  fi
+
+  if _has_command brew; then
+    brew update &&
+    brew upgrade &&
+    brew cask upgrade
+  fi
+
+  _has_command opkg && echo "opkg update && opkg upgrade" | sudo bash
+  _has_command mas  && mas upgrade 2>/dev/null
+  _has_command pipx && pipx upgrade-all 2>/dev/null
 }

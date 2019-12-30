@@ -33,27 +33,28 @@
   status = auto
   branch = auto
 
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldHighlight = normal bold 52
+	newHighlight = normal bold 22
+
 [core]
-  pager = less -rciM
+  pager = diff-so-fancy | less -x2 -rciFM
   excludesfile = /Users/rick/.gitignore
   quotepath = false
 
-[github]
-  user = rfletcher
-  token = (not committed)
-
-[user]
-  email = fletch@pobox.com
-  name = Rick Fletcher
-
-[merge]
-  tool = opendiff
-
-[push]
-  default = upstream
-
 [diff]
   tool = Kaleidoscope
+
+[diff-so-fancy]
+	markEmptyLines = false
 
 [difftool]
   prompt = false
@@ -64,9 +65,23 @@
 [gc]
   auto = 0
 
+[github]
+  user = rfletcher
+  token = (not committed)
+
+[merge]
+  tool = opendiff
+
+[mergetool]
+  prompt = false
+
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustexitcode = true
 
-[mergetool]
-  prompt = false
+[push]
+  default = upstream
+
+[user]
+  email = fletch@pobox.com
+  name = Rick Fletcher

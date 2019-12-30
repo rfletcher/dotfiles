@@ -20,9 +20,9 @@ fi
 
 # homebrew
 export HOMEBREW_NO_ANALYTICS=1
-if [[ -d /opt/homebrew ]]; then
+if [[ -d /opt/homebrew ]]; then         # linux
   eval "$(/opt/homebrew/bin/brew shellenv | sed 's|/opt/homebrew|/home/linuxbrew/.linuxbrew|')"
-elif [[ -x /usr/local/bin/brew ]]; then
+elif [[ -x /usr/local/bin/brew ]]; then # macos
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
