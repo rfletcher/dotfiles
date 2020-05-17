@@ -454,3 +454,15 @@ function upgrade() {
   _has_command mas  && mas upgrade 2>/dev/null
   _has_command pipx && pipx upgrade-all 2>/dev/null
 }
+
+##
+# archive web audio/video
+#
+function web-dl() {
+  youtube-dl -f bestvideo+bestaudio/best \
+    --all-subs \
+    --write-description \
+    --write-annotations \
+    --write-info-json "$1"
+}
+
