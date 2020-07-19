@@ -46,10 +46,10 @@ get_pwd_color() {
 # show the exit status of the last command, if nonzero
 #
 show_exit_status() {
-  STATUS="$1"
+  local STATUS="$1"
 
   if [[ "$STATUS" != "" ]] && [[ "$STATUS" != "0" ]]; then
-    echo " $(color off)$(color ${C_EXIT_NONZERO})[${STATUS}]$(color off)"
+    echo -n " [${STATUS}]"
   fi
 }
 
@@ -85,6 +85,6 @@ ${PREFIX}\
 \[$(color ${C_COLON})\]:\
 \[\$(color \$(get_pwd_color))\]\w\
 \[$(color ${C_BRANCH})\]${GIT_PS1}\
-\$(show_exit_status \$STATUS)\
+\[$(color ${C_EXIT_NONZERO})\]\$(show_exit_status \$STATUS)\
 \[$(color ${C_END_CHAR})\]\$ \
 \[$(color off)\]"
