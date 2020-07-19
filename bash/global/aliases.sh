@@ -463,6 +463,5 @@ function web-dl() {
     --all-subs \
     --write-description \
     --write-annotations \
-    --write-info-json "$1"
+    --write-info-json "$@"
 }
-
