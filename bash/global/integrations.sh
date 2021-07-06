@@ -10,6 +10,11 @@
 # aws
 which aws &>/dev/null && complete -C aws_completer aws
 
+# cli-privacy
+if which cli-privacy &>/dev/null; then
+  source $(which cli-privacy)
+fi
+
 # hass-cli: https://github.com/home-assistant/home-assistant-cli
 if which hass-cli &>/dev/null; then
   export HASS_SERVER="(not committed)"
