@@ -447,7 +447,7 @@ function upgrade() {
   if _has_command brew; then
     brew update &&
     brew upgrade &&
-    brew cask upgrade
+    brew upgrade --cask
   fi
 
   _has_command opkg && echo "opkg update && opkg upgrade" | sudo bash

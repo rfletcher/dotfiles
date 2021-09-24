@@ -24,11 +24,15 @@ if which hass-cli &>/dev/null; then
 fi
 
 # homebrew
-export HOMEBREW_NO_ANALYTICS=1
-if [[ -d /opt/homebrew ]]; then         # linux
-  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null | sed 's|/opt/homebrew|/home/linuxbrew/.linuxbrew|')"
-elif [[ -x /usr/local/bin/brew ]]; then # macos
-  eval "$(/usr/local/bin/brew shellenv 2>/dev/null)"
+if which brew &>/dev/null; then
+  export NODE_PATH="$(brew --prefix)/lib/node_modules"
+  export NPM_ROOT="$NODE_PATH"
+
+  if [[ -d /opt/homebrew ]]; then         # linux
+    eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null | sed 's|/opt/homebrew|/home/linuxbrew/.linuxbrew|')"
+  elif [[ -x /usr/local/bin/brew ]]; then # macos
+    eval "$(/usr/local/bin/brew shellenv 2>/dev/null)"
+  fi
 fi
 
 # pipx: https://pypi.org/project/pipx
