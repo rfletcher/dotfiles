@@ -195,7 +195,7 @@ function geoip() {
     IP=$(ip)
   fi
 
-  body "http://www.datasciencetoolkit.org/ip2coordinates/${IP}" | json
+  body "http://www.datasciencetoolkit.org/ip2coordinates/${IP}" | jq .
 }
 
 ##
