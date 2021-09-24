@@ -8,7 +8,6 @@
 export DISPLAY=:0.0
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.7 2>/dev/null)"
-export NPM_ROOT=/usr/local/share/npm
 
 export PATH="${HOME}/bin:${PATH}"
 # extend the PATH
