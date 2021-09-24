@@ -46,7 +46,7 @@
 	newHighlight = normal bold 22
 
 [core]
-  pager = diff-so-fancy | less -x2 -rciFM
+  pager = less -x2 -rciFM
   excludesfile = /Users/rick/.gitignore
   quotepath = false
 
@@ -68,6 +68,9 @@
 [github]
   user = rfletcher
   token = (not committed)
+
+[init]
+  defaultBranch = main
 
 [merge]
   tool = opendiff
