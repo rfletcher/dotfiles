@@ -22,7 +22,7 @@ LS_COLORS="$LS_COLORS:ex=$(_ansi bright);$(_ansi green)"   # executable file
 
 archives=( arg bz2 deb gz jar lzh rar rpm tar taz tgz Z z zip )
 images=( bmp gif jpeg jpg pbm pgm png ppm tif tiff xbm xpm )
-video=( asf avi dl fli flv gl m4v mkv mov mp4 mpeg mpg qt wmv xcf xwd )
+video=( asf avi dl fli flv gl m4v mkv mov mp4 mpeg mpg qt webm wmv xcf xwd )
 audio=( aiff flac mp3 ogg wav wma )
 
 for EXTENSION in ${archives[*]}; do
