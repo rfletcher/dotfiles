@@ -1,0 +1,6 @@
+screen -t "Reading List"  0
+stuff "cd Code/farmhouse; while true; do target/fh back-up-reading-list; gsleep 1h; done\012"
+screen -t "Finances"      1
+stuff "cd Desktop/wealthfront; while true; do ./update.sh; gsleep 1h; done\012"
+
+select 0
