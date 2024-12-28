@@ -57,8 +57,8 @@ if [ "$PS1" ]; then
   fi
 
   . ~/.bash/global/colors.sh
-  . ~/.bash/global/integrations.sh
   . ~/.bash/global/prompt.sh
 fi
 
+. ~/.bash/global/integrations.sh
 . ~/.bash/global/non-global.sh
