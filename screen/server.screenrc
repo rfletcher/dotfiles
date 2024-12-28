@@ -2,8 +2,8 @@ screen -t "Transcoder"   0
 stuff "sudo fh media-transcode /mnt/family-media/video/Movies/ /mnt/media/video/Comedy/ /mnt/media/video/Movies/\012"
 screen -t "Downloads"    1
 stuff "cd /mnt/download/trash; ll\012"
-screen -t "Semiphemeral" 2
-stuff "while true; do semiphemeral delete; sleep 1h; done\012"
+screen -t "Music" 2
+stuff "cd /mnt/download/done/Music\012"
 screen -t "Bash"         3
 
 select 0
