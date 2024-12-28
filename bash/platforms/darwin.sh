@@ -7,13 +7,6 @@
 # for the occasional X11 app
 export DISPLAY=:0.0
 
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.7 2>/dev/null)"
-
-export PATH="${HOME}/bin:${PATH}"
-# extend the PATH
-export PATH=".bundle/binstubs:${PATH}"
-export PATH="${NPM_ROOT}/bin:${PATH}"
-
 # aliases -------------------------------------------------------------------
 
 alias df='df -T hfs'

@@ -5,8 +5,20 @@
 # standard ENV variables ----------------------------------------------------
 
 export EDITOR=vi
-# add ~/bin to the path, if it exists
-[ -d ~/bin ] && export PATH="~/bin:${PATH}"
+
+# extend PATH
+for DIR in \
+  ~/bin \
+  ~/.bundle/binstubs \
+  /usr/local/bin \
+  /usr/local/sbin \
+  /home/linuxbrew/.linuxbrew/bin \
+  /home/linuxbrew/.linuxbrew/sbin \
+  ~/.linuxbrew/bin \
+  ~/.linuxbrew/sbin
+do \
+  [[ -d "$DIR" ]] && export PATH="$DIR:${PATH}"
+done
 
 # other ENV variables -------------------------------------------------------
 

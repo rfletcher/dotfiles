@@ -1,1 +1,6 @@
 EscapeChar ~
+
+Host *
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  RemoteForward 52698 localhost:52698
