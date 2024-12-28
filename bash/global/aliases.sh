@@ -459,7 +459,7 @@ function upgrade() {
 # archive web audio/video
 #
 function web-dl() {
-  youtube-dl -f bestvideo+bestaudio/best \
+  yt-dlp -f bestvideo+bestaudio/best \
     --all-subs \
     --write-description \
     --write-annotations \
