@@ -12,6 +12,8 @@ for DIR in \
   ~/.bundle/binstubs \
   /usr/local/bin \
   /usr/local/sbin \
+  /opt/homebrew/bin \
+  /opt/homebrew/sbin \
   /home/linuxbrew/.linuxbrew/bin \
   /home/linuxbrew/.linuxbrew/sbin \
   ~/.linuxbrew/bin \
@@ -50,8 +52,8 @@ shopt -s checkwinsize   # check window dimensions after each command
 
 # interactive shell?
 if [ "$PS1" ]; then
-  if [[ -d /usr/local/etc/bash_completion.d/ ]]; then
-    for FILE in /usr/local/etc/bash_completion.d/*; do
+  if [[ -d /opt/homebrew/etc/bash_completion.d/ ]]; then
+    for FILE in /opt/homebrew/etc/bash_completion.d/*; do
       . "$FILE"
     done
   fi
