@@ -44,6 +44,11 @@ fi
 #   export PIPX_BIN_DIR=/usr/local/bin
 # fi
 
+# pyenv
+if which pyenv &>/dev/null; then
+  eval "$(pyenv init - bash)"
+fi
+
 # rbenv
 if which rbenv &>/dev/null; then
   eval "$(rbenv init -)"
