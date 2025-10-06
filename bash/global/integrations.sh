@@ -33,6 +33,7 @@ fi
 
 export GOPATH="${HOME}/.go"
 
+# krew
 if which kubectl-krew &>/dev/null; then
   export PATH="${PATH}:${HOME}/.krew/bin"
 fi
