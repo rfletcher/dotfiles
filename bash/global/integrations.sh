@@ -31,6 +31,8 @@ if which cli-privacy &>/dev/null; then
   source $(which cli-privacy)
 fi
 
+export GOPATH="${HOME}/.go"
+
 if which kubectl-krew &>/dev/null; then
   export PATH="${PATH}:${HOME}/.krew/bin"
 fi

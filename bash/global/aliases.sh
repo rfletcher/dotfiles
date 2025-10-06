@@ -10,6 +10,7 @@
 alias ..='cd ..'
 alias beep='echo -ne "\a"'
 alias epoch='date +%s'
+alias gorepl='yaegi'
 alias grep='grep --color=auto'
 alias hass='hass-cli'
 alias ip='body http://checkip.amazonaws.com'
