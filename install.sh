@@ -25,5 +25,5 @@ find . -type f | sed "s|^./||" | while read -r FILE; do
 
   # an old symlink in the way?
   [[ -L ~/".${FILE}" ]] && rm ~/".${FILE}"
-  ln -s "${DOTFILES_DIR}/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
+  ln -s "${DOTFILES_DIR}/files/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
 done
