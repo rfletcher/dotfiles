@@ -14,17 +14,16 @@ function die() {
 }
 
 # find files, ignoring hidden files and directories
-find "$DOTFILES_DIR" -type f | sed "s#${DOTFILES_DIR}/##" | grep -vE "(^|/)\." | while read FILE; do
+cd "${DOTFILES_DIR}/files"
+find . -type f | sed "s|^./||" | while read -r FILE; do
   DEST=$(dirname "$FILE")
   FILENAME=$(basename "$FILE")
 
-  if [[ "$FILENAME" != "$INSTALL_SCRIPT" ]]; then
-    if [[ "$DEST" != "." ]]; then
-      mkdir -p ~/".${DEST}" || die "Couldn't make '$DEST'"
-    fi
-
-    # an old symlink in the way?
-    [[ -L ~/".${FILE}" ]] && rm ~/".${FILE}"
-    ln -s "${DOTFILES_DIR}/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
+  if [[ "$DEST" != "." ]]; then
+    mkdir -p ~/".${DEST}" || die "Couldn't make '$DEST'"
   fi
+
+  # an old symlink in the way?
+  [[ -L ~/".${FILE}" ]] && rm ~/".${FILE}"
+  ln -s "${DOTFILES_DIR}/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
 done

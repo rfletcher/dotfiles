@@ -1,7 +1,7 @@
 ##
 # prompt.sh
 #
-# custom bash prompt
+# configure a custom bash prompt
 #
 
 # show git state in addition to the branch name

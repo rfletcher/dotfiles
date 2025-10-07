@@ -1,5 +1,5 @@
 ##
-# global.sh
+# aliases.sh
 #
 # aliases, functions, etc. which should be set on every host
 #
@@ -13,12 +13,12 @@ alias epoch='date +%s'
 alias gorepl='yaegi'
 alias grep='grep --color=auto'
 alias hass='hass-cli'
-alias ip='body http://checkip.amazonaws.com'
 alias less='less -RciM'
 alias ls='ls --color'
 alias l='ls -hF'
 alias ll='l -o'
 alias llg='l -l'
+alias myip='body http://checkip.amazonaws.com'
 alias natsort='php -r "\$a = file(\"php://stdin\"); natsort(\$a); print join(\$a);"'
 alias realpath='readlink -f'
 alias rcp='rsync -avP'
@@ -38,9 +38,6 @@ alias urldecode='python -c "import sys,urllib;sys.stdout.write(urllib.unquote_pl
 # visualization
 alias freq='sort | uniq -c | graph'
 alias graph='awk '"'"'!max{max=$1;}{r="";i=s=60*$1/max;while(i-->0)r=r"#";printf "%15s %5d %s %s",$2,$1,r,"\n";}'"'"
-
-# typos
-alias snv='svn'
 
 # functions ------------------------------------------------------------
 
@@ -187,19 +184,6 @@ function color() {
 }
 
 ##
-# geoip
-#
-function geoip() {
-  IP="$1"
-
-  if [ -z "$IP" ]; then
-    IP=$(ip)
-  fi
-
-  body "http://www.datasciencetoolkit.org/ip2coordinates/${IP}" | jq .
-}
-
-##
 # extract - archive extractor (found: http://dotfiles.org/~morax/.bashrc)
 #
 # usage: extract <file>
@@ -238,44 +222,6 @@ function forn() {
 }
 
 ##
-# list hostnames of machines on which I have an account
-#
-# -p    return only personal hosts
-# -w    return only work hosts
-#
-function hosts() {
-  # hosts
-  local h_personal="${HOSTS_PERSONAL[*]}"
-  local h_work="${HOSTS_RUPTURE[*]}"
-
-  # defaults
-  local h_display=''
-  local display_all=1;
-  local display_personal='';
-  local display_work='';
-
-  # handle options
-  OPTIND=
-  while getopts "pw" option "$@"; do
-    case "$option" in
-       p ) display_all=''; display_personal=1;;
-       w ) display_all=''; display_work=1;;
-       ? ) echo "invalid option: $OPTARG"; return 1;;
-    esac;
-  done
-
-  # print hostnames
-  if [ -n "$display_all" ] || [ -n "$display_personal" ]; then
-    h_display="$h_display $h_personal";
-  fi
-  if [ -n "$display_all" ] || [ -n "$display_work" ]; then
-    h_display="$h_display $h_work";
-  fi
-
-  echo "$h_display" | trim | split
-}
-
-##
 # convert a json array of objects to a list of some property's value
 #
 # usage:
@@ -302,30 +248,6 @@ function readsecret() {
   read -r -s -p "Secret: " SECRET
 
   echo -n "$SECRET"
-}
-
-##
-# test whether a domain is registered
-#
-# usage: echo foo bar | registered
-# usage: registered foo.com
-#
-function registered() {
-  if [ -z "$1" ]; then INPUT=`cat -`; else INPUT="$1"; fi
-
-  for DOMAIN in $INPUT; do
-    if [[ `expr index "$DOMAIN" \.` == "0" ]]; then
-      DOMAIN="$DOMAIN.com"
-    fi
-
-    echo -n "$DOMAIN is... "
-
-    if [ -z "`whois "$DOMAIN" | grep -i "no match for"`" ]; then
-      echo "taken."
-    else
-      echo "available!"
-    fi
-  done
 }
 
 ##
@@ -438,11 +360,11 @@ function trim() {
 # Upgrade installed software
 #
 function upgrade() {
-  if _has_command apt-get; then
-    sudo apt-get update &&
-    sudo apt-get -y upgrade &&
-    sudo apt-get -y dist-upgrade &&
-    sudo apt-get -y autoremove
+  if _has_command apt; then
+    sudo apt update &&
+    sudo apt -y upgrade &&
+    sudo apt -y dist-upgrade &&
+    sudo apt -y autoremove
   fi
 
   if _has_command brew; then

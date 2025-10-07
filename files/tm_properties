@@ -29,7 +29,7 @@ tabSize               = 2
 
 ## Variables
 
-PATH                  = "~/.rbenv/shims:/usr/local/bin:$PATH"
+# PATH                  = "~/.rbenv/shims:/usr/local/bin:#$PATH"
 TM_FULLNAME           = "Rick Fletcher"
 TM_ORGANIZATION_NAME  = ""
 TM_RUBY               = "ruby"

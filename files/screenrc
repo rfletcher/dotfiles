@@ -10,5 +10,5 @@ shell -$SHELL
 
 caption always
 
-# Forget where I got this.  It's not the prettiest thing in the world, but I can't be bothered to clean it up.
+# Forget where I got this. It's not the prettiest thing in the world, but I can't be bothered to clean it up.
 hardstatus alwayslastline "%{=d d}[ %{= Y}$USER @ %H %{=d d}][%= %{= d}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{=d d}][%{= Y} %l %{=d d}][%{= Y} %d/%m %{Y}%c %{=d d}]"

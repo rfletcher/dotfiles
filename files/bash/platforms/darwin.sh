@@ -9,11 +9,8 @@ export DISPLAY=:0.0
 
 # aliases -------------------------------------------------------------------
 
-alias df='df -T hfs'
-alias edit='mate'
 alias mail='open "mailto:?body=$(cat - | stripansi | urlencode)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
-alias sort='sort -k 1,1'
 alias top='top -o cpu'
 
 # coreutils (alias <cmd> to coreutils' g<cmd>)
@@ -43,7 +40,7 @@ function notify() {
 
     shift $((OPTIND - 1))
 
-    MESSAGE="$1"
+    MESSAGE="$@"
   }
 
   function _set_tn_opt() {
@@ -54,8 +51,10 @@ function notify() {
 
   _set_tn_opt message "$MESSAGE"
 
-  [[ "$SUBITTLE" == "" ]] || _set_tn_opt title "$TITLE"
-  [[ "$TITLE" == "" ]]    || _set_tn_opt subtitle "$SUBTITLE"
+  [[ "$TITLE" == "" ]]    || _set_tn_opt title "$TITLE"
+  [[ "$SUBTITLE" == "" ]] || _set_tn_opt subtitle "$SUBTITLE"
 
+  set -x
   terminal-notifier "${TN_OPTS[@]}"
+  set +x
 }

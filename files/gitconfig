@@ -1,0 +1,90 @@
+[alias]
+  alias = !sh -c 'git config --get alias.$1' -
+  b = branch
+  cdiff = diff --word-diff=color --word-diff-regex=.
+  ci = commit
+  cia = commit --amend -C HEAD
+  cis = commit -m 'Update submodule'
+  co = checkout
+  com = checkout master
+  cp = cherry-pick
+  home = !hub browse
+  hub = !hub
+  l = log --date=relative
+  ll = !git l --stat
+  pull = pull --ff-only
+  rb = !grb
+  repush = !git up && git push
+  sm = submodule
+  st = status -sb
+  staged = diff --cached
+  stashed = "!for NAME in $(git stash list | cut -d : -f 1); do echo \"$NAME\"; git show \"$NAME\"; done"
+  su = sm update
+  up = pull --rebase --autostash
+  unchanged = update-index --assume-unchanged
+  unstage = reset HEAD --
+  unpack-refs = "!bash -c 'IFS=$''\\n''; for f in $(git show-ref --heads); do /bin/echo ''Writing  '' $(echo $f | cut -c42-); echo $(echo $f | cut -c1-40) > \"${GIT_DIR:-.git}/$(echo $f | cut -c42-)\"; done'"
+  web = "!hub browse"
+  wip = "!git add --all :/ && git ci -m WIP"
+  who = shortlog -s --
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldHighlight = normal bold 52
+	newHighlight = normal bold 22
+
+[core]
+  pager = less -x2 -rciFM
+  excludesfile = /Users/rick/.gitignore
+  quotepath = false
+
+[diff]
+  tool = Kaleidoscope
+
+[diff-so-fancy]
+	markEmptyLines = false
+
+[difftool]
+  prompt = false
+
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+
+[gc]
+  auto = 0
+
+[github]
+  user = rfletcher
+  token = (not committed)
+
+[init]
+  defaultBranch = main
+
+[merge]
+  tool = opendiff
+
+[mergetool]
+  prompt = false
+
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
+
+[push]
+  default = upstream
+
+[user]
+  email = fletch@pobox.com
+  name = Rick Fletcher

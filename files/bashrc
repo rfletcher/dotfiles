@@ -6,6 +6,8 @@
 
 export EDITOR=vi
 
+
+
 # extend PATH
 for DIR in \
   ~/bin \
@@ -24,10 +26,8 @@ done
 
 # other ENV variables -------------------------------------------------------
 
-export HOST_CATEGORIES=( personal viglink )
-
-export HOSTS_PERSONAL=( blur storage quicksand wire )
-export HOSTS_VIGLINK=( wire )
+export HOST_CATEGORIES=( personal )
+export HOSTS_PERSONAL=( wire )
 
 # bash history --------------------------------------------------------------
 
@@ -41,8 +41,8 @@ export HISTFILESIZE=${HISTSIZE}       # remember N commands across sessions
 shopt -s cdspell        # correct minor spelling errors in a `cd` command
 shopt -s cmdhist        # save multiline commands in history as one-liners
 shopt -s extglob        # "extended" pattern globbing
-shopt -s histappend     # append to history rather than overwrite
 shopt -s expand_aliases # include aliases when tab-completing commands
+shopt -s histappend     # append to history rather than overwrite
 shopt -s nocaseglob     # make path globbing case insensitive
 shopt -s checkwinsize   # check window dimensions after each command
 
@@ -52,12 +52,7 @@ shopt -s checkwinsize   # check window dimensions after each command
 
 # interactive shell?
 if [ "$PS1" ]; then
-  if [[ -d /opt/homebrew/etc/bash_completion.d/ ]]; then
-    for FILE in /opt/homebrew/etc/bash_completion.d/*; do
-      . "$FILE"
-    done
-  fi
-
+  . ~/.bash/global/completions.sh
   . ~/.bash/global/colors.sh
   . ~/.bash/global/prompt.sh
 fi
