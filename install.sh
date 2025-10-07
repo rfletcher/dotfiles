@@ -27,3 +27,8 @@ find . -type f | sed "s|^./||" | while read -r FILE; do
   [[ -L ~/".${FILE}" ]] && rm ~/".${FILE}"
   ln -s "${DOTFILES_DIR}/files/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
 done
+
+cd "$DOTFILES_DIR"
+find patches -name "*.patch" | while read -r PATCH; do
+  git apply "$PATCH"
+done
