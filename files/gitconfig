@@ -67,7 +67,7 @@
 
 [github]
   user = rfletcher
-  token = (not committed)
+  token = value-not-committed
 
 [init]
   defaultBranch = main
