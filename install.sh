@@ -37,7 +37,11 @@ find . -type f | sed "s|^./||" | while read -r FILE; do
   ln -s "${DOTFILES_DIR}/files/${FILE}" ~/".${FILE}" || die "Couldn't link '$FILE'"
 done
 
+# apply any local patches (quick and dirty secrets injection)
 cd "$DOTFILES_DIR"
 find patches -name "*.patch" | while read -r PATCH; do
   git apply "$PATCH"
 done
+
+# set permissions
+chmod 600 ~/.netrc
