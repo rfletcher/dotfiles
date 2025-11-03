@@ -230,6 +230,23 @@ function headers() {
 }
 
 ##
+# highlight lines (entire lines) which match a regexp
+#
+# usage:
+#   headers https://1.1.1.1 | highlight ^location
+#
+function highlight() {
+  local TERM="${@: -1}"
+  local GREP_OPTS=()
+
+  if [[ $# > 1 ]]; then
+    GREP_OPTS=( "${@:1:$#-1}" )
+  fi
+
+  cat - | grep -E ${GREP_OPTS[*]} ".*${TERM}.*|$"
+}
+
+##
 # convert a json array of objects to a list of some property's value
 #
 # usage:
