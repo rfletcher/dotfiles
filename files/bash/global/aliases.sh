@@ -31,7 +31,6 @@ alias toupper='tr [:lower:] [:upper:]'
 # http
 alias body='curl -s'
 alias get='curl -s -D -'
-alias headers='get -o /dev/null'
 alias urlencode='python -c "import sys,urllib;sys.stdout.write(urllib.quote_plus(sys.stdin.read()))"'
 alias urldecode='python -c "import sys,urllib;sys.stdout.write(urllib.unquote_plus(sys.stdin.read()))"'
 
@@ -219,6 +218,15 @@ function forn() {
   for(( i=1; i<=$num; i++ )); do
     `${command//\{\}/$i}`
   done
+}
+
+##
+# make an http request and print only the response headers
+#
+# usage:
+#   $ headers https://example.com
+function headers() {
+  get -o /dev/null "$@" | tr -d $'\r'
 }
 
 ##
